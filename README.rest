@@ -1,0 +1,17 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+SUSE Studio APIv3 design documents
+==================================
+
+* Overview_ discusses design guidelines for SUSE Studio APIv3.
+* REST_ describes the architectural style in the context of HTTP.
+* `schema/`_ contains proposed JSON Schema v04 descriptions,
+  using CoffeeScript_ syntax.
+
+Everything here is very much WIP.
+
+.. _Overview: overview.rest
+.. _REST:     REST.rest
+.. _schema/:  ./schema/
+.. _CoffeeScript: http://coffeescript.org/
