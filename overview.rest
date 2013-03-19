@@ -44,6 +44,18 @@ Means
   removing the need to change all existing links whenever the
   representation changes".
 
+Representation media types
+**************************
+
+APIv3 will use JSON instead of XML.
+
+Transparent versioning of the API would call for custom media types
+(they cost nothing), and a form of versioning those.
+I (roman) favor this over other ways to version the API.
+For an in-depth discussion see `Further Reading`_ and REST_.
+
+.. _REST: REST.rest
+
 Partial updates
 ***************
 
