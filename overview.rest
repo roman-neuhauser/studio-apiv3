@@ -112,6 +112,13 @@ I propose describing representations used by the API using
 JSON Schema v4, which is being prepared for submission to IETF
 "in early 2013".
 
+Canonical JSON Schema documents are JSON documents.
+JSON is great as a serialization format, but all the curly braces
+and quotes make my eyes bleed.  For this reason, the proposals
+unde3r `schema/` employ CoffeeScript syntax.
+We can easily canonicalize these with a bit of `coffee(1)` and
+`JSON.stringify`.
+
 JSON Schema v4
 ++++++++++++++
 
