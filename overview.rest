@@ -14,6 +14,8 @@ Goals
 
   Extensibility, scalability, pragmatism.
 
+These are forward-looking statements covering v3 and onward:
+
 * We want the API to be durable in face of time and scale.
 * We want to be able to evolve both the interface and implementation,
   potentially keeping compatibility with old clients.
@@ -24,6 +26,11 @@ Goals
 * We want the API to be usable with low effort on the part of the
   client software authors.
 * Inexperienced programmers should be able to use the API.
+
+We *could* keep the current API (*I*\nterface, not *I*\mplementation)
+around indefinitely, extend it with new endpoints, and current
+endpoints with new behaviors through Prefer: and conneg, the opinion
+that this is not worth the effort seems to prevail in the team.
 
 Means
 +++++
