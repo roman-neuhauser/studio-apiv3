@@ -89,6 +89,10 @@ where using a wide brush can deprive the client of ability to take
 the most appropriate action and force a human intervention to
 disambiguate the situation.
 
+See `HTTP Status codes`_ for an in-depth discussion.
+
+.. _HTTP Status codes: http-status.rest
+
 Error responses
 +++++++++++++++
 
