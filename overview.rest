@@ -157,8 +157,14 @@ HTTPbis
   http://tools.ietf.org/wg/httpbis/
 PATCH method for HTTP
   https://tools.ietf.org/rfc/rfc5789
+Content-Disposition Header in HTTP
+  https://tools.ietf.org/html/rfc6266
+HTTP State Management Mechanism (cookies)
+  http://tools.ietf.org/html/rfc6265
 Prefer header
   http://datatracker.ietf.org/doc/draft-snell-http-prefer/
+Uniform Resource Identifier (URI): Generic Syntax
+  http://tools.ietf.org/html/rfc3986
 URI Template
   http://tools.ietf.org/html/rfc6570
 JSON, application/json
