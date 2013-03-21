@@ -137,7 +137,7 @@ JSON Schema v4, which is being prepared for submission to IETF
 Canonical JSON Schema documents are JSON documents.
 JSON is great as a serialization format, but all the curly braces
 and quotes make my eyes bleed.  For this reason, the proposals
-unde3r `schema/` employ CoffeeScript syntax.
+under `schema/` employ CoffeeScript syntax.
 We can easily canonicalize these with a bit of `coffee(1)` and
 `JSON.stringify`.
 
