@@ -113,7 +113,10 @@ Spec: ::
   Prefer:
     return=minimal
 
-  Status: 200 204 409
+  Status:
+    200 Ok
+  | 204 No Content
+  | 409 Conflict
 
 Example: ::
 
@@ -169,7 +172,11 @@ Spec: ::
   Prefer:
     return=minimal
 
-  Status: 200 204 404 409 410 412 415
+  Status:
+    200 Ok
+  | 204 No Content
+  | 409 Conflict
+  | 412 Precondition Failed
   Content-Type:
     &Accept
 
@@ -208,7 +215,11 @@ Spec: ::
   Prefer:
     return=minimal
 
-  Status: 200 204 404 409 410 412 415
+  Status:
+    200 Ok
+  | 204 No Content
+  | 409 Conflict
+  | 412 Precondition Failed
   Content-Type:
     &Accept
 
@@ -240,7 +251,9 @@ Spec: ::
     $CT:appliance-config
   | $CT:appliance-status
 
-  Status: 200 404 410 412
+  Status:
+    200 Ok
+  | 412 Precondition Failed
   Content-Type:
     &Accept
 
@@ -257,7 +270,10 @@ Spec: ::
   Accept:
     $CT:result
 
-  Status: 200 404 409 410 412 415
+  Status:
+    200 Ok
+  | 409 Conflict
+  | 412 Precondition Failed
   Content-Type:
     &Accept
 
@@ -273,7 +289,9 @@ Spec: ::
   | application/x-compressed-tar          ; tar.gz tar.Z tgz taz
   | application/zip                       ; zip
 
-  Status: 200 | 406
+  Status:
+    200 Ok
+  | 406 Not Acceptable
   Content-Type:
     &Accept
   Content-Disposition:
@@ -290,7 +308,9 @@ Spec: ::
   Content-Type:
     $CT:build-request
 
-  Status: 200 201
+  Status:
+    200 Ok
+  | 201 Created
   Content-Type:
     &Accept
   Location:
@@ -452,7 +472,8 @@ Spec: ::
   Accept:
     &Content-Type
 
-  Status: 202
+  Status:
+    202 Accepted
   Content-Type:
     &Accept
   Location:
@@ -465,7 +486,9 @@ Spec: ::
   Accept:
     $CT:result
 
-  Status: 200 204
+  Status:
+    200 Ok
+  | 204 No Content
   Content-Type:
     &Accept
 
@@ -476,7 +499,8 @@ Spec: ::
   Accept:
     $CT:testdrive
 
-  Status: 200
+  Status:
+    200 Ok
   Content-Type:
     &Accept
 
