@@ -9,6 +9,8 @@ This document discusses semantics of HTTP status codes and their use
 in SUSE Studio APIv3.
 Irrelevant status codes are omitted.
 
+.. contents::
+
 201 Created
 ***********
 
