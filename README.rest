@@ -6,7 +6,7 @@ SUSE Studio APIv3 design documents
 ==================================
 
 * Overview_ discusses design guidelines for SUSE Studio APIv3.
-* `HTTP Status codes` discusses semantics of HTTP status codes
+* `HTTP Status codes`_ discusses semantics of HTTP status codes
   and their use in SUSE Studio APIv3.
 * REST_ describes the architectural style in the context of HTTP.
 * `schema/`_ contains proposed JSON Schema v04 descriptions,
