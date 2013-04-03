@@ -7,6 +7,16 @@ Admin-oriented resources
 
 .. contents::
 
+Common
+******
+
+This document uses the following "macros" to reduce the chattiness,
+as well as the churn induced by involving this proposal.
+
+$CT:readonly-mode
+  application/vnd.suse.studio.readonly-mode.v3+json
+
+
 Read-only Mode
 **************
 
@@ -15,10 +25,10 @@ Read-only Mode
 Example: ::
 
   < GET /admin/readonly-mode
-  < Accept: application/vnd.suse.studio.readonly-mode.v3+json
+  < Accept: $CT:readonly-mode
 
   > 200 Ok
-  > Content-Type: application/vnd.suse.studio.readonly-mode.v3+json
+  > Content-Type: $CT:readonly-mode
   >
   > {
   >   instance: "https://example.com/"
@@ -30,7 +40,7 @@ Example: ::
 Example: ::
 
   < PUT /admin/readonly-mode
-  < Content-Type: application/vnd.suse.studio.readonly-mode.v3+json
+  < Content-Type: $CT:readonly-mode
   < Prefer: return=minimal
   <
   < {

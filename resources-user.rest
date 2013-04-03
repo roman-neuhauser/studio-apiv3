@@ -7,6 +7,33 @@ User-oriented resources
 
 .. contents::
 
+Common
+******
+
+This document uses the following "macros" to reduce the chattiness,
+as well as the churn induced by involving this proposal.
+
+$CT:appliances
+  application/vnd.suse.studio.appliances.v3+json
+$CT:appliance-clone-request
+  application/vnd.suse.studio.appliance-clone-request.v3+json
+$CT:appliance-config
+  application/vnd.suse.studio.appliance-configuration.v3+json
+$CT:appliance-config-patch
+  application/vnd.suse.studio.appliance-configuration-patch.v3+json
+$CT:appliance-status
+  application/vnd.suse.studio.appliance-status.v3+json
+$CT:build-request
+  application/vnd.suse.studio.build-request.v3+json
+$CT:build-status
+  application/vnd.suse.studio.build-status.v3+json
+$CT:repositories
+  application/vnd.suse.studio.repositories.v3+json
+$CT:result
+  application/vnd.suse.studio.result.v3+json
+$CT:testdrive
+  application/vnd.suse.studio.testdrive.v3+json
+
 Appliances
 **********
 
@@ -17,15 +44,15 @@ List my appliances.
 Spec: ::
 
   Accept:
-    application/vnd.suse.studio.appliances.v3+json
+    $CT:appliances
 
 Example: ::
 
   < GET /appliances
-  < Accept: application/vnd.suse.studio.appliances.v3+json
+  < Accept: $CT:appliances
 
   > 200 Ok
-  > Content-Type: application/vnd.suse.studio.appliances.v3+json
+  > Content-Type: $CT:appliances
   >
   > ...
 
@@ -36,12 +63,12 @@ Create an appliance.
 Spec: ::
 
   Content-Type:
-    application/vnd.suse.studio.appliance-configuration.v3+json
-  | application/vnd.suse.studio.appliance-clone-information.v3+json
+    $CT:appliance-config
+  | $CT:appliance-clone-request
   Accept:
-    application/vnd.suse.studio.appliance-configuration.v3+json
-  | application/vnd.suse.studio.appliance-status.v3+json
-  | application/vnd.suse.studio.result.v3+json
+    $CT:appliance-config
+  | $CT:appliance-status
+  | $CT:result
   Prefer:
     return=minimal
 
@@ -51,24 +78,24 @@ Spec: ::
 Example: ::
 
   < POST /appliances
-  < Content-Type: application/vnd.suse.studio.appliance-clone-information.v3+json
-  < Accept: application/vnd.suse.studio.appliance-configuration.v3+json
+  < Content-Type: $CT:appliance-clone-request
+  < Accept: $CT:appliance-config
   <
   < ...
 
   > 201 Created
   > Location: /appliances/123
-  > Content-Type: application/vnd.suse.studio.appliance-configuration.v3+json
+  > Content-Type: $CT:appliance-config
   >
   > ...
 
   < POST /appliances
-  < Content-Type: application/vnd.suse.studio.appliance-clone-information.v3+json
-  < Accept: application/vnd.suse.studio.result.v3+json
+  < Content-Type: $CT:appliance-clone-request
+  < Accept: $CT:appliance-result
 
   > 201 Created
   > Location: /appliances/123
-  > Content-Type: application/vnd.suse.studio.result.v3+json
+  > Content-Type: $CT:appliance-result
   >
   > ...
 
@@ -82,7 +109,7 @@ Delete an appliance.
 Spec: ::
 
   Accept:
-    application/vnd.suse.studio.result.v3+json
+    $CT:appliance-result
   Prefer:
     return=minimal
 
@@ -91,10 +118,10 @@ Spec: ::
 Example: ::
 
   < DELETE /appliance/123
-  < Accept: application/vnd.suse.studio.result.v3+json
+  < Accept: $CT:appliance-result
 
   > 200 Ok
-  > Content-Type: application/vnd.suse.studio.result.v3+json
+  > Content-Type: $CT:appliance-result
   >
   > ...
 
@@ -112,8 +139,8 @@ Describe the latest version of an appliance.
 Spec: ::
 
   Accept:
-    application/vnd.suse.studio.appliance-configuration.v3+json
-  | application/vnd.suse.studio.appliance-status.v3+json
+    $CT:appliance-config
+  | $CT:appliance-status
 
   Content-Type:
     &Accept
@@ -121,10 +148,10 @@ Spec: ::
 Example: ::
 
   < GET /appliances/123
-  < Accept: application/vnd.suse.studio.appliance-configuration.v3+json
+  < Accept: $CT:appliance-config
 
   > 200 Ok
-  > Content-Type: application/vnd.suse.studio.appliance-configuration.v3+json
+  > Content-Type: $CT:appliance-config
   >
   > ...
 
@@ -135,10 +162,10 @@ Modify the configuration of an appliance.
 Spec: ::
 
   Content-Type:
-    application/vnd.suse.studio.appliance-configuration-patch.v3+json
+    $CT:appliance-config-patch
   Accept:
-    application/vnd.suse.studio.appliance-configuration.v3+json
-  | application/vnd.suse.studio.appliance-status.v3+json
+    $CT:appliance-config
+  | $CT:appliance-status
   Prefer:
     return=minimal
 
@@ -149,18 +176,18 @@ Spec: ::
 Example: ::
 
   < PATCH /appliances/123
-  < Content-Type: application/vnd.suse.studio.appliance-configuration-patch.v3+json
-  < Accept: application/vnd.suse.studio.appliance-configuration.v3+json
+  < Content-Type: $CT:appliance-config-patch
+  < Accept: $CT:appliance-config
 
   > 200 Ok
-  > Content-Type: application/vnd.suse.studio.appliance-configuration.v3+json
+  > Content-Type: $CT:appliance-config
   >
   > ...
 
 Example: ::
 
   < PATCH /appliances/123
-  < Content-Type: application/vnd.suse.studio.appliance-configuration-patch.v3+json
+  < Content-Type: $CT:appliance-config-patch
   < Prefer: return=minimal
 
   > 204 No Content
@@ -177,7 +204,7 @@ This removes all images of the given appliance version.
 Spec: ::
 
   Accept:
-    application/vnd.suse.studio.result.v3+json
+    $CT:result
   Prefer:
     return=minimal
 
@@ -188,10 +215,10 @@ Spec: ::
 Example: ::
 
   < DELETE /appliance/123
-  < Accept: application/vnd.suse.studio.result.v3+json
+  < Accept: $CT:result
 
   > 200 Ok
-  > Content-Type: application/vnd.suse.studio.result.v3+json
+  > Content-Type: $CT:result
   >
   > ...
 
@@ -210,8 +237,8 @@ Describe given version of an appliance.
 Spec: ::
 
   Accept:
-    application/vnd.suse.studio.appliance-configuration.v3+json
-  | application/vnd.suse.studio.appliance-status.v3+json
+    $CT:appliance-config
+  | $CT:appliance-status
 
   Status: 200 404 410 412
   Content-Type:
@@ -228,7 +255,7 @@ Delete the built `:format` image of the `:version` of `:app`.
 Spec: ::
 
   Accept:
-    application/vnd.suse.studio.result.v3+json
+    $CT:result
 
   Status: 200 404 409 410 412 415
   Content-Type:
@@ -259,9 +286,9 @@ Build images for the current (or given) version of the appliance.
 Spec: ::
 
   Accept:
-    application/vnd.suse.studio.build-status.v3+json
+    $CT:build-status
   Content-Type:
-    application/vnd.suse.studio.build-request.v3+json
+    $CT:build-request
 
   Status: 200 201
   Content-Type:
@@ -273,14 +300,14 @@ Spec: ::
 Example: ::
 
   < POST /appliances/123
-  < Content-Type: application/vnd.suse.studio.build-request.v3+json
-  < Accept: application/vnd.suse.studio.build-status.v3+json
+  < Content-Type: $CT:build-request
+  < Accept: $CT:build-status
   <
   < ...
 
   > 201 Created
   > Location: /appliances/123/4.5.6
-  < Content-Type: application/vnd.suse.studio.build-status.v3+json
+  < Content-Type: $CT:build-status
 
 Repositories
 ************
@@ -292,15 +319,15 @@ List repositories.
 Spec: ::
 
   Accept:
-    application/vnd.suse.studio.repositories.v3+json
+    $CT:repositories
 
 Example: ::
 
   < GET /repositories
-  < Accept: application/vnd.suse.studio.repositories.v3+json
+  < Accept: $CT:repositories
 
   > 200 Ok
-  > Content-Type: application/vnd.suse.studio.repositories.v3+json
+  > Content-Type: $CT:repositories
   >
   > ...
 
@@ -421,7 +448,7 @@ Testdrives
 Spec: ::
 
   Content-Type:
-    application/vnd.suse.studio.testdrive.v3+json
+    $CT:testdrive
   Accept:
     &Content-Type
 
@@ -436,7 +463,7 @@ Spec: ::
 Spec: ::
 
   Accept:
-    application/vnd.suse.studio.result.v3+json
+    $CT:result
 
   Status: 200 204
   Content-Type:
@@ -447,7 +474,7 @@ GET /testdrives/sNa6Fu9BaR
 Spec: ::
 
   Accept:
-    application/vnd.suse.studio.testdrive.v3+json
+    $CT:testdrive
 
   Status: 200
   Content-Type:
