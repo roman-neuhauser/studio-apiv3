@@ -1,0 +1,37 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+=========
+Resources
+=========
+
+*Spec* sections display important request headers and header values,
+followed by a blank line, then important response headers and values.
+
+`Content-Type: &Accept` is a shorthand meaning *the response C-T uses
+whatever representation was specified in the Accept request header*.
+
+All resources should permit the `OPTIONS` HTTP method.
+Responses to these requests should list allowable methods (`Allow`)
+and content types (`Accept`, `Accept-Patch`).
+Individual resource descriptions below omit discussion of `OPTIONS`.
+
+Requests for unknown resources result in *404 Not Found*, requests
+for deleted resources may result in *410 Gone*.
+
+Requests using unsupported methods for existing resources result in
+*405 Method Not Allowed*.
+
+Requests for existing resources using permitted methods but
+unsupported `Content-Type` result in *415 Unsupported Media Type*.
+
+Valid `DELETE` and `PUT` requests permit the `Prefer` request header
+with the value of `return=minimal`.
+Such requests yield *204 No Content* instead of the normal *200 Ok*.
+
+
+* `Admin-oriented resources`_
+* `User-oriented resources`_
+
+.. _Admin-oriented resources: resources-admin.rest
+.. _User-oriented resources: resources-user.rest

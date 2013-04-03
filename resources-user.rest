@@ -1,0 +1,455 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+=======================
+User-oriented resources
+=======================
+
+.. contents::
+
+Appliances
+**********
+
+**GET /appliances**
+
+List my appliances.
+
+Spec: ::
+
+  Accept:
+    application/vnd.suse.studio.appliance-list.v3+json
+
+Example: ::
+
+  < GET /appliances
+  < Accept: application/vnd.suse.studio.appliance-list.v3+json
+
+  > 200 Ok
+  > Content-Type: application/vnd.suse.studio.appliance-list.v3+json
+  >
+  > ...
+
+**POST /appliances**
+
+Create an appliance.
+
+Spec: ::
+
+  Content-Type:
+    application/vnd.suse.studio.appliance-configuration.v3+json
+  | application/vnd.suse.studio.appliance-clone-information.v3+json
+  Accept:
+    application/vnd.suse.studio.appliance-configuration.v3+json
+  | application/vnd.suse.studio.appliance-status.v3+json
+  | application/vnd.suse.studio.result.v3+json
+  Prefer:
+    return=minimal
+
+  Location:
+    $URI
+
+Example: ::
+
+  < POST /appliances
+  < Content-Type: application/vnd.suse.studio.appliance-clone-information.v3+json
+  < Accept: application/vnd.suse.studio.appliance-configuration.v3+json
+  <
+  < ...
+
+  > 201 Created
+  > Location: /appliances/123
+  > Content-Type: application/vnd.suse.studio.appliance-configuration.v3+json
+  >
+  > ...
+
+  < POST /appliances
+  < Content-Type: application/vnd.suse.studio.appliance-clone-information.v3+json
+  < Accept: application/vnd.suse.studio.result.v3+json
+
+  > 201 Created
+  > Location: /appliances/123
+  > Content-Type: application/vnd.suse.studio.result.v3+json
+  >
+  > ...
+
+Appliance
+*********
+
+**DELETE /appliances/:app**
+
+Delete an appliance.
+
+Spec: ::
+
+  Accept:
+    application/vnd.suse.studio.result.v3+json
+  Prefer:
+    return=minimal
+
+  Status: 200 204 409
+
+Example: ::
+
+  < DELETE /appliance/123
+  < Accept: application/vnd.suse.studio.result.v3+json
+
+  > 200 Ok
+  > Content-Type: application/vnd.suse.studio.result.v3+json
+  >
+  > ...
+
+Example: ::
+
+  < DELETE /appliance/123
+  < Prefer: return=minimal
+
+  > 204 No Content
+
+**GET /appliances/:app**
+
+Describe the latest version of an appliance.
+
+Spec: ::
+
+  Accept:
+    application/vnd.suse.studio.appliance-configuration.v3+json
+  | application/vnd.suse.studio.appliance-status.v3+json
+
+  Content-Type:
+    &Accept
+
+Example: ::
+
+  < GET /appliances/123
+  < Accept: application/vnd.suse.studio.appliance-configuration.v3+json
+
+  > 200 Ok
+  > Content-Type: application/vnd.suse.studio.appliance-configuration.v3+json
+  >
+  > ...
+
+**PATCH /appliances/:app**
+
+Modify the configuration of an appliance.
+
+Spec: ::
+
+  Content-Type:
+    application/vnd.suse.studio.appliance-configuration-patch.v3+json
+  Accept:
+    application/vnd.suse.studio.appliance-configuration.v3+json
+  | application/vnd.suse.studio.appliance-status.v3+json
+  Prefer:
+    return=minimal
+
+  Status: 200 204 404 409 410 412 415
+  Content-Type:
+    &Accept
+
+Example: ::
+
+  < PATCH /appliances/123
+  < Content-Type: application/vnd.suse.studio.appliance-configuration-patch.v3+json
+  < Accept: application/vnd.suse.studio.appliance-configuration.v3+json
+
+  > 200 Ok
+  > Content-Type: application/vnd.suse.studio.appliance-configuration.v3+json
+  >
+  > ...
+
+Example: ::
+
+  < PATCH /appliances/123
+  < Content-Type: application/vnd.suse.studio.appliance-configuration-patch.v3+json
+  < Prefer: return=minimal
+
+  > 204 No Content
+
+Appliance Version
+*****************
+
+**DELETE /appliances/:app/:version**
+
+Delete an appliance version.
+
+This removes all images of the given appliance version.
+
+Spec: ::
+
+  Accept:
+    application/vnd.suse.studio.result.v3+json
+  Prefer:
+    return=minimal
+
+  Status: 200 204 404 409 410 412 415
+  Content-Type:
+    &Accept
+
+Example: ::
+
+  < DELETE /appliance/123
+  < Accept: application/vnd.suse.studio.result.v3+json
+
+  > 200 Ok
+  > Content-Type: application/vnd.suse.studio.result.v3+json
+  >
+  > ...
+
+Example: ::
+
+  < DELETE /appliance/123
+  < Prefer: return=minimal
+
+  > 204 No Content
+
+
+**GET /appliances/:app/:version**
+
+Describe given version of an appliance.
+
+Spec: ::
+
+  Accept:
+    application/vnd.suse.studio.appliance-configuration.v3+json
+  | application/vnd.suse.studio.appliance-status.v3+json
+
+  Status: 200 404 410 412
+  Content-Type:
+    &Accept
+
+
+Appliance Builds
+****************
+
+**DELETE /appliances/:app/:version/:format**
+
+Delete the built `:format` image of the `:version` of `:app`.
+
+Spec: ::
+
+  Accept:
+    application/vnd.suse.studio.result.v3+json
+
+  Status: 200 404 409 410 412 415
+  Content-Type:
+    &Accept
+
+
+**GET /appliances/:app/:version/:format**
+
+Fetch the built `:format` image of the `:version` of `:app`.
+
+Spec: ::
+
+  Accept: 
+    application/x-bzip-compressed-tar     ; tar.bz tar.bz2 tbz tbz2
+  | application/x-compressed-tar          ; tar.gz tar.Z tgz taz
+  | application/zip                       ; zip
+
+  Status: 200 | 406
+  Content-Type:
+    &Accept
+  Content-Disposition:
+    FILENAME
+
+**POST /appliances/:app**
+
+Build images for the current (or given) version of the appliance.
+
+Spec: ::
+
+  Accept:
+    application/vnd.suse.studio.build-status.v3+json
+  Content-Type:
+    application/vnd.suse.studio.build-request.v3+json
+
+  Status: 200 201
+  Content-Type:
+    &Accept
+  Location:
+    /appliances/:app/:version
+    /appliances/:app/:version/:format
+
+Example: ::
+
+  < POST /appliances/123
+  < Content-Type: application/vnd.suse.studio.build-request.v3+json
+  < Accept: application/vnd.suse.studio.build-status.v3+json
+  <
+  < ...
+
+  > 201 Created
+  > Location: /appliances/123/4.5.6
+  < Content-Type: application/vnd.suse.studio.build-status.v3+json
+
+Repositories
+************
+
+**GET /repositories**
+
+List repositories.
+
+Spec: ::
+
+  Accept:
+    application/vnd.suse.studio.repositories.v3+json
+
+Example: ::
+
+  < GET /repositories
+  < Accept: application/vnd.suse.studio.repositories.v3+json
+
+  > 200 Ok
+  > Content-Type: application/vnd.suse.studio.repositories.v3+json
+  >
+  > ...
+
+**POST /repositories**
+
+Import one or more repositories.
+
+
+Repository
+**********
+
+**DELETE /repositories/:name**
+
+Remove a repository.
+
+
+**GET /repositories/:name**
+
+Fetch information about a repository.
+
+
+**PUT /repositories/:name**
+
+Import a repository, possibly overwriting.
+
+
+**POST /repositories/:name/refresh**
+
+Update package metadata for a repository.
+
+
+Appliance Repositories
+**********************
+
+**GET /appliances/:app/repositories**
+
+List repositories used for the appliance.
+
+
+**POST /appliances/:app/repositories**
+
+Add a repository into the appliance.
+
+
+Appliance Repository
+********************
+
+**DELETE /appliances/:app/repositories/:name**
+
+Delete a repository from the appliance.
+
+
+Appliance Software
+******************
+
+Selected
+++++++++
+
+**GET /software/:app/selected**
+
+List packages and patterns included in the appliance.
+
+
+**PATCH /software/:app/selected**
+
+Modify the list packages and patterns included in the appliance.
+
+
+**POST /software/:app/selected**
+
+Add packages and patterns included in the appliance.
+
+
+**PUT /software/:app/selected**
+
+Set packages and patterns included in the appliance.
+
+
+Banned
+++++++
+
+**GET /software/:app/banned**
+
+List packages banned from the appliance.
+
+
+**PATCH /software/:app/banned**
+
+Modify the list packages and patterns included in the appliance.
+
+
+**POST /software/:app/banned**
+
+Add packages banned from the appliance.
+
+
+**PUT /software/:app/banned**
+
+Set packages banned from the appliance.
+
+
+Overlay Files
+*************
+
+WIP
+
+GPG Keys
+********
+
+WIP
+
+
+Testdrives
+**********
+
+**POST /appliances/:app/:version/:format**
+
+Spec: ::
+
+  Content-Type:
+    application/vnd.suse.studio.testdrive.v3+json
+  Accept:
+    &Content-Type
+
+  Status: 202
+  Content-Type:
+    &Accept
+  Location:
+    /testdrives/:token                     ; /testdrives/sNa6Fu9BaR
+
+**DELETE /testdrives/:token**
+
+Spec: ::
+
+  Accept:
+    application/vnd.suse.studio.result.v3+json
+
+  Status: 200 204
+  Content-Type:
+    &Accept
+
+GET /testdrives/sNa6Fu9BaR
+
+Spec: ::
+
+  Accept:
+    application/vnd.suse.studio.testdrive.v3+json
+
+  Status: 200
+  Content-Type:
+    &Accept
+

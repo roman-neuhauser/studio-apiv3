@@ -1,0 +1,158 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+========================
+Admin-oriented resources
+========================
+
+.. contents::
+
+Read-only Mode
+**************
+
+**GET /admin/readonly-mode**
+
+Example: ::
+
+  < GET /admin/readonly-mode
+  < Accept: application/vnd.suse.studio.readonly-mode.v3+json
+
+  > 200 Ok
+  > Content-Type: application/vnd.suse.studio.readonly-mode.v3+json
+  >
+  > {
+  >   instance: "https://example.com/"
+  > , readonly: true
+  > }
+
+**PUT /admin/readonly-mode**
+
+Example: ::
+
+  < PUT /admin/readonly-mode
+  < Content-Type: application/vnd.suse.studio.readonly-mode.v3+json
+  < Prefer: return=minimal
+  <
+  < {
+  <   instance: "https://example.com/"
+  < , readonly: false
+  < }
+
+  > 204 No Content
+
+
+Runners
+*******
+
+**GET /runners**
+
+List runners.
+
+**POST /runners**
+
+Ping, Sync, Disable, or Change configuration of one or more runners.
+
+**DELETE /runners/:hostname**
+
+Drop a runner.
+
+**POST /runners/:hostname**
+
+Ping, Sync, Disable, or (un)Prefer a runner.
+
+**PUT /runners/:hostname**
+
+Create or update a runner.
+
+
+Builds
+******
+
+**GET /builds/running**
+
+List running builds.
+
+**GET /builds/queued**
+
+List queued builds.
+
+
+Uploads to Amazon
+*****************
+
+**GET /amazons/running**
+
+List running uploads.
+
+**GET /amazons/queued**
+
+List queued uploads.
+
+
+Uploads to Azure
+****************
+
+**GET /azures/running**
+
+List running uploads.
+
+**GET /azures/queued**
+
+List queued uploads.
+
+
+Cron Jobs
+*********
+
+**GET /cron**
+
+List cron jobs.
+
+**POST /cron**
+
+Process cron jobs.
+
+
+Cron Job
+********
+
+**DELETE /cron/:job**
+
+Drop a cron job.
+
+**GET /cron/:job**
+
+Show info on a cron job.
+
+**POST /cron/:job**
+
+Run a cron job.
+
+**PUT /cron/:job**
+
+Create a cron job.
+
+
+Base Repositories
+*****************
+
+**GET /base-repositories**
+
+List base repositories.
+
+**POST /base-repositories**
+
+Enable or disable base repositories.
+
+
+Appliance Templates
+*******************
+
+**GET /base-systems**
+
+List base systems.
+
+**POST /base-systems**
+
+Enable or disable base systems.
+
