@@ -1,0 +1,42 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+===============================
+SUSE Studio APIv3 User Feedback
+===============================
+
+This document presents a summary of user feedback received from
+Studio API users regarding the expected direction the v3 would take.
+
+The text is anonymized to protect those users' privacy as this is
+public.
+
+Platforms
+=========
+
+We have at least one heavy user who based their Studio automation
+on MS Windows.
+They rely on batch (`cmd.exe`) scripts driving `curl`, with the
+outlook on moving towards PHP or maybe Ruby, still on Windows.
+
+Natural Identifiers
+===================
+
+At least one user is not happy about having to query the API to
+find out the synthetic id of an object to be able to use it;
+this was mentioned in the context of repositories and overlay files.
+
+Media Types
+===========
+
+There've been no objections against using `JSON`-based media types.
+Parsing JSON seems to be as easy--or easier--as parsing POX on all
+platforms so far.
+
+Content Negotiation
+===================
+
+There've been no objections against embracing `Accept`-based *conneg*.
+Users I talked to rely on tools based on their production technologies
+to "play with" the API: Java programmers use their IDE features,
+`curl(1)` users simply use `curl`.

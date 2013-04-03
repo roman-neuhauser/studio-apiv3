@@ -5,7 +5,7 @@ RST2HTML ?=	$(SHELL) tools/rst2html
 
 export SHELL
 
-htmlfiles = README.html REST.html http-status.html overview.html
+htmlfiles = README.html REST.html feedback.html http-status.html overview.html
 
 html: $(htmlfiles)
 

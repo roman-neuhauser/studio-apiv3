@@ -11,6 +11,8 @@ SUSE Studio APIv3 design documents
 * REST_ describes the architectural style in the context of HTTP.
 * `schema/`_ contains proposed JSON Schema v04 descriptions,
   using CoffeeScript_ syntax.
+* Feedback_ sums up the discussions I've had with APIv2 users
+  about its shortcomings and APIv3 directions.
 
 Everything here is very much WIP.
 
@@ -18,3 +20,4 @@ Everything here is very much WIP.
 .. _REST:     REST.rest
 .. _schema/:  ./schema/
 .. _CoffeeScript: http://coffeescript.org/
+.. _Feedback: feedback.rest
