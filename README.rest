@@ -9,6 +9,8 @@ SUSE Studio APIv3 design documents
 * `HTTP Status Codes`_ discusses semantics of HTTP status codes
   and their use in SUSE Studio APIv3.
 * REST_ describes the architectural style in the context of HTTP.
+* Resources_ describes exposed resources and semantics of their
+  manipulation.
 * `schema/`_ contains proposed JSON Schema v04 descriptions,
   using CoffeeScript_ syntax.
 * Feedback_ sums up the discussions I've had with APIv2 users
@@ -19,6 +21,7 @@ Everything here is very much WIP.
 .. _Overview: overview.rest
 .. _HTTP Status Codes: http-status.rest
 .. _REST:     REST.rest
+.. _Resources: resources.rest
 .. _schema/:  ./schema/
 .. _CoffeeScript: http://coffeescript.org/
 .. _Feedback: feedback.rest
