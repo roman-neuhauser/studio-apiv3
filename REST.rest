@@ -1,6 +1,7 @@
 .. vim: ft=rst sts=2 sw=2 tw=70
 .. default-role:: literal
 
+=================
 REST: What is it?
 =================
 
