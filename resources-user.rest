@@ -17,15 +17,15 @@ List my appliances.
 Spec: ::
 
   Accept:
-    application/vnd.suse.studio.appliance-list.v3+json
+    application/vnd.suse.studio.appliances.v3+json
 
 Example: ::
 
   < GET /appliances
-  < Accept: application/vnd.suse.studio.appliance-list.v3+json
+  < Accept: application/vnd.suse.studio.appliances.v3+json
 
   > 200 Ok
-  > Content-Type: application/vnd.suse.studio.appliance-list.v3+json
+  > Content-Type: application/vnd.suse.studio.appliances.v3+json
   >
   > ...
 
