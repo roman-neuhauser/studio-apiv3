@@ -46,6 +46,9 @@ Spec: ::
   Accept:
     $CT:appliances
 
+  Content-Type:
+    &Accept
+
 Example: ::
 
   < GET /appliances
@@ -72,6 +75,8 @@ Spec: ::
   Prefer:
     return=minimal
 
+  Content-Type:
+    &Accept
   Location:
     $URI
 
@@ -117,6 +122,8 @@ Spec: ::
     200 Ok
   | 204 No Content
   | 409 Conflict
+  Content-Type:
+    &Accept
 
 Example: ::
 
