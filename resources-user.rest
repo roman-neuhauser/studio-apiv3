@@ -499,7 +499,7 @@ Spec: ::
   Content-Type:
     &Accept
 
-GET /testdrives/sNa6Fu9BaR
+**GET /testdrives/:token**
 
 Spec: ::
 
