@@ -30,8 +30,9 @@ These are forward-looking statements covering v3 and onward:
 
 We *could* keep the current API (*I*\nterface, not *I*\mplementation)
 around indefinitely, extend it with new endpoints, and current
-endpoints with new behaviors through Prefer: and conneg, the opinion
-that this is not worth the effort seems to prevail in the team.
+endpoints with new behaviors through `Prefer` and content negotiation,
+the opinion that this is not worth the effort seems to prevail in the
+team.
 
 Means
 +++++

@@ -30,13 +30,14 @@ Media Types
 ===========
 
 There've been no objections against using `JSON`-based media types.
-Parsing JSON seems to be as easy--or easier--as parsing POX on all
-platforms so far.
+Parsing JSON seems to be as easy--or easier--as parsing POX (Plain
+Old XML) on all platforms so far.
 
 Content Negotiation
 ===================
 
-There've been no objections against embracing `Accept`-based *conneg*.
+There've been no objections against embracing `Accept`-based content
+negotiation.
 Users I talked to rely on tools based on their production technologies
 to "play with" the API: Java programmers use their IDE features,
 `curl(1)` users simply use `curl`.
