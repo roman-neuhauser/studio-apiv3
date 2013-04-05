@@ -167,7 +167,7 @@ Example: ::
   > , "c.runners.susestudio.com": { ... }
   > }
 
-** GET /runners/:hostname**
+**GET /runners/:hostname**
 
 Retrieve information about a runner.
 
