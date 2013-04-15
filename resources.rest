@@ -35,3 +35,7 @@ Such requests yield *204 No Content* instead of the normal *200 Ok*.
 
 .. _Admin-oriented resources: resources-admin.rest
 .. _User-oriented resources: resources-user.rest
+
+[Top_]
+
+.. _Top: README.rest

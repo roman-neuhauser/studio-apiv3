@@ -10,6 +10,8 @@ the most popular is called REST, or REpresentational State Transfer.
 REST describes the broad software architecture style which underpins
 the most successful distributed system in existence, the Web.
 
+.. contents::
+
 REST From the Horse's Mouth
 ***************************
 
@@ -212,3 +214,7 @@ A good article describing REST is at [infoq.com]_.
 .. [Fielding] http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm
 .. [infoq.com] http://www.infoq.com/articles/roa-rest-of-rest
 
+
+[Top_]
+
+.. _Top: README.rest

@@ -11,6 +11,8 @@ Studio API users regarding the expected direction the v3 would take.
 The text is anonymized to protect those users' privacy as this is
 public.
 
+.. contents::
+
 Platforms
 =========
 
@@ -41,3 +43,7 @@ negotiation.
 Users I talked to rely on tools based on their production technologies
 to "play with" the API: Java programmers use their IDE features,
 `curl(1)` users simply use `curl`.
+
+[Top_]
+
+.. _Top: README.rest

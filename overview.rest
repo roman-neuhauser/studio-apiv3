@@ -7,6 +7,8 @@ Overview
 
 This document discusses design guidelines for SUSE Studio APIv3.
 
+.. contents::
+
 Goals and Means
 ***************
 
@@ -196,3 +198,7 @@ Further Reading
 * http://www.subbu.org/blog/2007/12/vary-header-for-restful-applications
 * http://stackoverflow.com/questions/389169/best-practices-for-api-versioning
 * http://www.w3.org/DesignIssues/Axioms.html
+
+[Top_]
+
+.. _Top: README.rest
