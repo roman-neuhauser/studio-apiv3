@@ -1,0 +1,27 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+======================
+Tooling for the server
+======================
+
+Grape_
+
+  is a REST-like API micro-framework for Ruby providing a simple
+  DSL to easily develop RESTful APIs.
+  It has built-in support for common conventions, including multiple
+  formats, subdomain/prefix restriction, content negotiation, versioning
+  and much more.
+
+Roar_
+
+  is a framework for parsing and rendering REST documents.
+  Both syntax and semantics are declared in Ruby modules that can be
+  mixed into your domain models.
+  Additional features include client HTTP support, coercion,
+  client-side caching, awesome hypermedia support and more.
+
+
+.. _Grape: http://rdoc.info/github/intridea/grape/master
+.. _Roar:  http://rdoc.info/github/apotonick/roar/master
+

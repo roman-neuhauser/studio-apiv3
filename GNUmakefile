@@ -12,7 +12,8 @@ htmlfiles = README.html \
 	    overview.html \
 	    resources.html \
 	    resources-admin.html \
-	    resources-user.html
+	    resources-user.html \
+	    server.html
 
 html: $(htmlfiles)
 

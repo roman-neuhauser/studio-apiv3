@@ -13,6 +13,8 @@ SUSE Studio APIv3 design documents
   manipulation.
 * `schema/`_ contains proposed JSON Schema v04 descriptions,
   using CoffeeScript_ syntax.
+* `Server`_ documents currently preferred tooling for the server-side
+  implementation.
 * Feedback_ sums up the discussions I've had with APIv2 users
   about its shortcomings and APIv3 directions.
 
@@ -25,3 +27,4 @@ Everything here is very much WIP.
 .. _schema/:  ./schema/
 .. _CoffeeScript: http://coffeescript.org/
 .. _Feedback: feedback.rest
+.. _Server: server.rest
