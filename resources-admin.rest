@@ -200,8 +200,8 @@ Example: ::
   <
   < [
   <   { "op": "replace", "path": "/state", "value": "disabled" }
-  <   { "op": "replace", "path": "/preferred", "value": false }
-  <   { "op": "replace", "path": "/capacity/kiwi", "value": 1 }
+  < , { "op": "replace", "path": "/preferred", "value": false }
+  < , { "op": "replace", "path": "/capacity/kiwi", "value": 1 }
   < ]
 
   > 200 Ok
