@@ -1,0 +1,45 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+==================
+/testdrives/:token
+==================
+
+.. contents::
+
+
+Media Types
+***********
+
+See `Media Types`_.
+
+.. _`Media Types`: ../../media-types.rest
+
+
+DELETE
+++++++
+
+Spec: ::
+
+  Accept:
+    $CT:result
+
+  Status:
+    200 Ok
+  | 204 No Content
+  Content-Type:
+    &Accept
+
+GET
++++
+
+Spec: ::
+
+  Accept:
+    $CT:testdrive
+
+  Status:
+    200 Ok
+  Content-Type:
+    &Accept
+

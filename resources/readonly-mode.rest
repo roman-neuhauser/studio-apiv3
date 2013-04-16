@@ -1,0 +1,53 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+==============
+/readonly-mode
+==============
+
+.. contents::
+
+
+Media Types
+***********
+
+See `Media Types`_.
+
+.. _`Media Types`: media-types.rest
+
+
+Methods
+*******
+
+GET
++++
+
+Example: ::
+
+  < GET /readonly-mode
+  < Accept: $CT:readonly-mode
+
+  > 200 Ok
+  > Content-Type: $CT:readonly-mode
+  >
+  > {
+  >   instance: "https://example.com/"
+  > , readonly: true
+  > }
+
+PUT
++++
+
+Example: ::
+
+  < PUT /readonly-mode
+  < Content-Type: $CT:readonly-mode
+  < Prefer: return=minimal
+  <
+  < {
+  <   instance: "https://example.com/"
+  < , readonly: false
+  < }
+
+  > 204 No Content
+

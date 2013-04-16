@@ -1,0 +1,45 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+=======================
+/software/:app/selected
+=======================
+
+.. contents::
+
+
+Media Types
+***********
+
+See `Media Types`_.
+
+.. _`Media Types`: media-types.rest
+
+
+Methods
+*******
+
+
+GET
++++
+
+List packages and patterns included in the appliance.
+
+
+PATCH
++++++
+
+Modify the list packages and patterns included in the appliance.
+
+
+POST
+++++
+
+Add packages and patterns included in the appliance.
+
+
+PUT
++++
+
+Set packages and patterns included in the appliance.
+

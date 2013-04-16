@@ -1,0 +1,32 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+=============
+/base-systems
+=============
+
+.. contents::
+
+
+Media Types
+***********
+
+See `Media Types`_.
+
+.. _`Media Types`: media-types.rest
+
+
+Methods
+*******
+
+
+GET
++++
+
+List base systems.
+
+POST
+++++
+
+Enable or disable base systems.
+

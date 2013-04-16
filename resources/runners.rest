@@ -1,0 +1,110 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+========
+/runners
+========
+
+.. contents::
+
+
+Media Types
+***********
+
+See `Media Types`_.
+
+.. _`Media Types`: media-types.rest
+
+
+GET
++++
+
+List runners.
+
+Example: ::
+
+  < GET /runners
+  < Accept: $CT:runners
+
+  > 200 Ok
+  > Content-Type: $CT:runners
+  >
+  > {
+  >   "a.runners.susestudio.com": {
+  >     "host": "a.runners.susestudio.com"
+  >   , "port": 3005
+  >   , "state": "active"
+  >   , "preferred": true
+  >   , "avg-load": "0.5"
+  >   , "arch": "x86_64"
+  >   , "last-pinged": "2013-04-05T11:44:59Z"
+  >   , "capacity": {
+  >       "kiwi": 2
+  >     , "testdrive": 2
+  >     , "amazon": 0
+  >     , "azure": 0
+  >     }
+  >   , "running": {
+  >       "kiwi": 1
+  >     , "testdrive": 2
+  >     , "amazon": 0
+  >     , "azure": 0
+  >     }
+  >   }
+  > , "b.runners.susestudio.com": {
+  >     "host": "b.runners.susestudio.com"
+  >   , "port": 3005
+  >   , "state": "disabled"
+  >   , "preferred": false
+  >     ...
+  >   }
+  > }
+
+PATCH
++++++
+
+Example: ::
+
+  < PATCH /runners/a.runners.susestudio.com
+  < Accept: $CT:runner
+  < Content-Type: $CT:runners-change
+  <
+  < [
+  <   { "op": "replace"
+  <   , "path": "/a.runners.susestudio.com/state"
+  <   , "value": "disabled"
+  <   }
+  < , { "op": "replace"
+  <   , "path": "/a.runners.susestudio.com/preferred"
+  <   , "value": false
+  <   }
+  < , { "op": "replace"
+  <   , "path": "/b.runners.susestudio.com/state"
+  <   , "value": "active"
+  <   }
+  < , { "op": "replace"
+  <   , "path": "/b.runners.susestudio.com/preferred"
+  <   , "value": true
+  <   }
+  < ]
+
+  > 200 Ok
+  > Content-Type: $CT:runner
+  >
+  > {
+  >   "a.runners.susestudio.com": {
+  >     "host": "a.runners.susestudio.com"
+  >   , "port": 3005
+  >   , "state": "disabled"
+  >   , "preferred": false
+  >     ...
+  >   }
+  > , "b.runners.susestudio.com": {
+  >     "host": "b.runners.susestudio.com"
+  >   , "port": 3005
+  >   , "state": "active"
+  >   , "preferred": true
+  >     ...
+  >   }
+  > }
+

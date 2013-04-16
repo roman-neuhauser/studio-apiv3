@@ -1,0 +1,29 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+===========
+Media Types
+===========
+
+$CT:appliances
+  application/vnd.suse.studio.appliances.v3+json
+$CT:appliance-clone-request
+  application/vnd.suse.studio.appliance-clone-request.v3+json
+$CT:appliance-config
+  application/vnd.suse.studio.appliance-configuration.v3+json
+$CT:appliance-config-patch
+  application/vnd.suse.studio.appliance-configuration-patch.v3+json
+$CT:appliance-status
+  application/vnd.suse.studio.appliance-status.v3+json
+$CT:build-request
+  application/vnd.suse.studio.build-request.v3+json
+$CT:build-status
+  application/vnd.suse.studio.build-status.v3+json
+$CT:readonly-mode
+  application/vnd.suse.studio.readonly-mode.v3+json
+$CT:repositories
+  application/vnd.suse.studio.repositories.v3+json
+$CT:result
+  application/vnd.suse.studio.result.v3+json
+$CT:testdrive
+  application/vnd.suse.studio.testdrive.v3+json

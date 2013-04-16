@@ -1,0 +1,43 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+=============
+/repositories
+=============
+
+.. contents::
+
+
+Media Types
+***********
+
+See `Media Types`_.
+
+.. _`Media Types`: media-types.rest
+
+
+GET
++++
+
+List repositories.
+
+Spec: ::
+
+  Accept:
+    $CT:repositories
+
+Example: ::
+
+  < GET /repositories
+  < Accept: $CT:repositories
+
+  > 200 Ok
+  > Content-Type: $CT:repositories
+  >
+  > ...
+
+POST
+++++
+
+Import one or more repositories.
+

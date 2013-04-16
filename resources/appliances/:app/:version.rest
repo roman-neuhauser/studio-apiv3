@@ -1,0 +1,78 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+=========================
+/appliances/:app/:version
+=========================
+
+.. contents::
+
+
+Media Types
+***********
+
+See `Media Types`_.
+
+.. _`Media Types`: media-types.rest
+
+
+Methods
+*******
+
+DELETE
+++++++
+
+Delete an appliance version.
+
+This removes all images of the given appliance version.
+
+Spec: ::
+
+  Accept:
+    $CT:result
+  Prefer:
+    return=minimal
+
+  Status:
+    200 Ok
+  | 204 No Content
+  | 409 Conflict
+  | 412 Precondition Failed
+  Content-Type:
+    &Accept
+
+Example: ::
+
+  < DELETE /appliance/123
+  < Accept: $CT:result
+
+  > 200 Ok
+  > Content-Type: $CT:result
+  >
+  > ...
+
+Example: ::
+
+  < DELETE /appliance/123
+  < Prefer: return=minimal
+
+  > 204 No Content
+
+
+GET
++++
+
+Describe given version of an appliance.
+
+Spec: ::
+
+  Accept:
+    $CT:appliance-config
+  | $CT:appliance-status
+
+  Status:
+    200 Ok
+  | 412 Precondition Failed
+  Content-Type:
+    &Accept
+

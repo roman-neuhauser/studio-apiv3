@@ -1,0 +1,73 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+=================================
+/appliances/:app/:version/:format
+=================================
+
+.. contents::
+
+
+Media Types
+***********
+
+See `Media Types`_.
+
+.. _`Media Types`: media-types.rest
+
+
+DELETE
+++++++
+
+Delete the built `:format` image of the `:version` of `:app`.
+
+Spec: ::
+
+  Accept:
+    $CT:result
+
+  Status:
+    200 Ok
+  | 409 Conflict
+  | 412 Precondition Failed
+  Content-Type:
+    &Accept
+
+
+GET
++++
+
+Fetch the built `:format` image of the `:version` of `:app`.
+
+Spec: ::
+
+  Accept:
+    application/x-bzip-compressed-tar     ; tar.bz tar.bz2 tbz tbz2
+  | application/x-compressed-tar          ; tar.gz tar.Z tgz taz
+  | application/zip                       ; zip
+
+  Status:
+    200 Ok
+  | 406 Not Acceptable
+  Content-Type:
+    &Accept
+  Content-Disposition:
+    FILENAME
+
+POST
+++++
+
+Spec: ::
+
+  Content-Type:
+    $CT:testdrive
+  Accept:
+    &Content-Type
+
+  Status:
+    202 Accepted
+  Content-Type:
+    &Accept
+  Location:
+    /testdrives/:token                     ; /testdrives/sNa6Fu9BaR
+

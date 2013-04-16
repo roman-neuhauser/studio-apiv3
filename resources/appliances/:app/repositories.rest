@@ -1,0 +1,33 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+=============================
+/appliances/:app/repositories
+=============================
+
+.. contents::
+
+
+Media Types
+***********
+
+See `Media Types`_.
+
+.. _`Media Types`: media-types.rest
+
+
+Methods
+*******
+
+
+GET
++++
+
+List repositories used for the appliance.
+
+
+POST
+++++
+
+Add a repository into the appliance.
+

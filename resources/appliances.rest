@@ -1,0 +1,90 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+===========
+/appliances
+===========
+
+.. contents::
+
+
+Media Types
+***********
+
+See `Media Types`_.
+
+.. _`Media Types`: media-types.rest
+
+
+Methods
+*******
+
+GET
++++
+
+List my appliances.
+
+Spec: ::
+
+  Accept:
+    $CT:appliances
+
+  Content-Type:
+    &Accept
+
+Example: ::
+
+  < GET /appliances
+  < Accept: $CT:appliances
+
+  > 200 Ok
+  > Content-Type: $CT:appliances
+  >
+  > ...
+
+POST
+++++
+
+Create an appliance.
+
+Spec: ::
+
+  Content-Type:
+    $CT:appliance-config
+  | $CT:appliance-clone-request
+  Accept:
+    $CT:appliance-config
+  | $CT:appliance-status
+  | $CT:result
+  Prefer:
+    return=minimal
+
+  Content-Type:
+    &Accept
+  Location:
+    $URI
+
+Example: ::
+
+  < POST /appliances
+  < Content-Type: $CT:appliance-clone-request
+  < Accept: $CT:appliance-config
+  <
+  < ...
+
+  > 201 Created
+  > Location: /appliances/123
+  > Content-Type: $CT:appliance-config
+  >
+  > ...
+
+  < POST /appliances
+  < Content-Type: $CT:appliance-clone-request
+  < Accept: $CT:appliance-result
+
+  > 201 Created
+  > Location: /appliances/123
+  > Content-Type: $CT:appliance-result
+  >
+  > ...
+

@@ -1,0 +1,31 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+==================
+/base-repositories
+==================
+
+.. contents::
+
+
+Media Types
+***********
+
+See `Media Types`_.
+
+.. _`Media Types`: media-types.rest
+
+
+Methods
+*******
+
+GET
++++
+
+List base repositories.
+
+POST
+++++
+
+Enable or disable base repositories.
+

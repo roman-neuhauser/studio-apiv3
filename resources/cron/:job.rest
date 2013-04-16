@@ -1,0 +1,41 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+==========
+/cron/:job
+==========
+
+.. contents::
+
+
+Media Types
+***********
+
+See `Media Types`_.
+
+.. _`Media Types`: ../../media-types.rest
+
+
+Methods
+*******
+
+DELETE
+++++++
+
+Drop a cron job.
+
+GET
++++
+
+Show info on a cron job.
+
+POST
+++++
+
+Run a cron job.
+
+PUT
++++
+
+Create a cron job.
+

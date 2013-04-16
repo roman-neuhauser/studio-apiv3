@@ -1,0 +1,135 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+==================
+/runners/:hostname
+==================
+
+.. contents::
+
+
+Media Types
+***********
+
+See `Media Types`_.
+
+.. _`Media Types`: ../../media-types.rest
+
+
+DELETE
+++++++
+
+Drop a runner.
+
+Example: ::
+
+  < DELETE /runners/b.runners.susestudio.com
+  < Accept: $CT:runners
+
+  > 204 Ok
+  > Content-Type: $CT:runners
+  > Content-Location: /runners
+  >
+  > {
+  >   "a.runners.susestudio.com": { ... }
+  > , "c.runners.susestudio.com": { ... }
+  > }
+
+GET
++++
+
+Retrieve information about a runner.
+
+Example: ::
+
+  < GET /runners/a.runners.susestudio.com
+  < Accept: $CT:runner
+
+  > 200 Ok
+  > Content-Type: $CT:runner
+  >
+  > {
+  >   "host": "a.runners.susestudio.com"
+  > , "port": 3005
+  > , "state": "active"
+  > , "preferred": true
+  > , "avg-load": "0.5"
+  > , "arch": "x86_64"
+  > , "last-pinged": "2013-04-05T11:44:59Z"
+  >   ...
+  > }
+
+PATCH
++++++
+
+Example: ::
+
+  < PATCH /runners/a.runners.susestudio.com
+  < Accept: $CT:runner
+  < Content-Type: $CT:runner-change
+  <
+  < [
+  <   { "op": "replace", "path": "/state", "value": "disabled" }
+  < , { "op": "replace", "path": "/preferred", "value": false }
+  < , { "op": "replace", "path": "/capacity/kiwi", "value": 1 }
+  < ]
+
+  > 200 Ok
+  > Content-Type: $CT:runner
+  >
+  > {
+  >   "host": "a.runners.susestudio.com"
+  > , "port": 3005
+  > , "state": "disabled"
+  > , "preferred": false
+  > , "avg-load": "0.5"
+  > , "arch": "x86_64"
+  > , "last-pinged": "2013-04-05T11:44:59Z"
+  >   ...
+  > }
+
+
+PUT
++++
+
+Create or update a runner.
+
+Example: ::
+
+  < PUT /runners/c.runners.susestudio.com
+  < Accept: $CT:runner
+  < Content-Type: $CT:runner
+  <
+  < {
+  <   "host": "c.runners.susestudio.com"
+  < , "port": 3005
+  < , "state": "active"
+  < , "preferred": false
+  < , "capacity": {
+  <     "kiwi": 1
+  <   , "testdrive": 2
+  <   , "amazon": 0
+  <   , "azure": 0
+  <   }
+  < , "running": {
+  <     "kiwi": 1
+  <   , "testdrive": 2
+  <   , "amazon": 0
+  <   , "azure": 0
+  <   }
+  < }
+
+  > 200 Ok
+  > Content-Type: $CT:runner
+  >
+  > {
+  >   "host": "c.runners.susestudio.com"
+  > , "port": 3005
+  > , "state": "active"
+  > , "preferred": false
+  > , "avg-load": "0.1"
+  > , "arch": "x86_64"
+  > , "last-pinged": "2013-04-05T13:16:21Z"
+  >   ...
+  > }
+

@@ -4,7 +4,10 @@ rest="$1"
 html="$2"
 surl="${rest##*/}"
 
-sed -e '/^\.\. /s/\.rest/.html/' < $rest | \
-  $rst2html -stg --source-url $surl - $html
+sed \
+  -e '/^\.\. _.*\.rest$/s/\.rest$/.html/' \
+  -e '/^\.\. _.*`:$/{n; s/\.rest$/.html/; }' \
+  < $rest | \
+  $rst2html - $html
 
 # vim: ft=sh sw=2 ts=2 et

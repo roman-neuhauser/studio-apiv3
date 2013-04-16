@@ -1,0 +1,156 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+================
+/appliances/:app
+================
+
+.. contents::
+
+
+Media Types
+***********
+
+See `Media Types`_.
+
+.. _`Media Types`: ../../media-types.rest
+
+
+Methods
+*******
+
+DELETE
+++++++
+
+Delete an appliance.
+
+Spec: ::
+
+  Accept:
+    $CT:appliance-result
+  Prefer:
+    return=minimal
+
+  Status:
+    200 Ok
+  | 204 No Content
+  | 409 Conflict
+  Content-Type:
+    &Accept
+
+Example: ::
+
+  < DELETE /appliance/123
+  < Accept: $CT:appliance-result
+
+  > 200 Ok
+  > Content-Type: $CT:appliance-result
+  >
+  > ...
+
+Example: ::
+
+  < DELETE /appliance/123
+  < Prefer: return=minimal
+
+  > 204 No Content
+
+GET
++++
+
+Describe the latest version of an appliance.
+
+Spec: ::
+
+  Accept:
+    $CT:appliance-config
+  | $CT:appliance-status
+
+  Content-Type:
+    &Accept
+
+Example: ::
+
+  < GET /appliances/123
+  < Accept: $CT:appliance-config
+
+  > 200 Ok
+  > Content-Type: $CT:appliance-config
+  >
+  > ...
+
+PATCH
++++++
+
+Modify the configuration of an appliance.
+
+Spec: ::
+
+  Content-Type:
+    $CT:appliance-config-patch
+  Accept:
+    $CT:appliance-config
+  | $CT:appliance-status
+  Prefer:
+    return=minimal
+
+  Status:
+    200 Ok
+  | 204 No Content
+  | 409 Conflict
+  | 412 Precondition Failed
+  Content-Type:
+    &Accept
+
+Example: ::
+
+  < PATCH /appliances/123
+  < Content-Type: $CT:appliance-config-patch
+  < Accept: $CT:appliance-config
+
+  > 200 Ok
+  > Content-Type: $CT:appliance-config
+  >
+  > ...
+
+Example: ::
+
+  < PATCH /appliances/123
+  < Content-Type: $CT:appliance-config-patch
+  < Prefer: return=minimal
+
+  > 204 No Content
+
+POST
+++++
+
+Build images for the current (or given) version of the appliance.
+
+Spec: ::
+
+  Accept:
+    $CT:build-status
+  Content-Type:
+    $CT:build-request
+
+  Status:
+    200 Ok
+  | 201 Created
+  Content-Type:
+    &Accept
+  Location:
+    /appliances/:app/:version
+    /appliances/:app/:version/:format
+
+Example: ::
+
+  < POST /appliances/123
+  < Content-Type: $CT:build-request
+  < Accept: $CT:build-status
+  <
+  < ...
+
+  > 201 Created
+  > Location: /appliances/123/4.5.6
+  < Content-Type: $CT:build-status
+
