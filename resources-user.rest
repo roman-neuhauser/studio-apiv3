@@ -17,6 +17,7 @@ User-oriented resources
 * `/appliances/:app/status`_
 * `/appliances/:app/:version`_
 * `/appliances/:app/:version/:format`_
+* `/builds/queued`_
 * `/repositories`_
 * `/repositories/:name`_
 * `/software/:app/banned`_
@@ -47,6 +48,7 @@ User-oriented resources
     resources/appliances/:app/:version.rest
 .. _`/appliances/:app/:version/:format`:
     resources/appliances/:app/:version/:format.rest
+.. _`/builds/queued`:           resources/builds/queued.rest
 .. _`/repositories`:            resources/repositories.rest
 .. _`/repositories/:name`:      resources/repositories/:name.rest
 .. _`/software/:app/banned`:    resources/software/:app/banned.rest

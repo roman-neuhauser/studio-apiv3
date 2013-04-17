@@ -24,3 +24,73 @@ GET
 
 List queued builds.
 
+Example: ::
+
+  < GET /builds/queued
+
+  > 200 Ok
+  > Content-Type: $CT:builds-queued
+  >
+  > {
+  >   {
+  >     "appliance": "/appliances/123"
+  >   , "format": "iso"
+  >   , "queued": "2013-04-16T11:23:45Z"
+  >   }
+  > , {
+  >     "appliance": "/appliances/123"
+  >   , "format": "xen"
+  >   , "queued": "2013-04-16T11:23:45Z"
+  >   }
+  > }
+
+POST
+++++
+
+Queue a build.
+
+Spec: ::
+
+  Accept:
+    $CT:builds-queued
+  Content-Type:
+    $CT:build-request
+
+  Status:
+    200 Ok
+  Content-Type:
+    &Accept
+  Content-Location:
+    /builds/queued
+
+Example: ::
+
+  < POST /builds/queued
+  < Content-Type: $CT:build-request
+  <
+  < {
+  <   "appliance": "/appliances/123"
+  < , "format": "oem"
+  < }
+
+  > 200 Ok
+  > Content-Type: $CT:builds-queued
+  >
+  > {
+  >   {
+  >     "appliance": "/appliances/123"
+  >   , "format": "iso"
+  >   , "queued": "2013-04-16T11:23:45Z"
+  >   }
+  > , {
+  >     "appliance": "/appliances/123"
+  >   , "format": "xen"
+  >   , "queued": "2013-04-16T11:23:45Z"
+  >   }
+  > , {
+  >     "appliance": "/appliances/123"
+  >   , "format": "oem"
+  >   , "queued": "2013-04-17T09:11:23Z"
+  >   }
+  > }
+
