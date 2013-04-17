@@ -156,7 +156,7 @@ Specifications
 **************
 
 HTTP 1.1
-  http://tools.ietf.org/html/rfc2068
+  http://tools.ietf.org/html/rfc2616
 HTTPbis
   http://tools.ietf.org/wg/httpbis/
 PATCH method for HTTP
@@ -174,11 +174,11 @@ URI Template
 JSON, application/json
   http://tools.ietf.org/html/rfc4627
 application/json-patch
-  http://datatracker.ietf.org/doc/draft-ietf-appsawg-json-patch/
+  http://tools.ietf.org/html/rfc6902
 JSON schema
   http://tools.ietf.org/html/draft-zyp-json-schema-04
 JSON pointer
-  http://datatracker.ietf.org/doc/draft-ietf-appsawg-json-pointer/
+  http://tools.ietf.org/html/rfc6901
 Link relations
   http://datatracker.ietf.org/doc/draft-snell-additional-link-relations/
 XML media types (foo/bar+xml)
