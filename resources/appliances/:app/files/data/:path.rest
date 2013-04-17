@@ -19,4 +19,74 @@ See `Media Types`_.
 Methods
 *******
 
-WIP
+DELETE
+++++++
+
+Drop `:path` from image.
+
+Spec: ::
+
+  Accept:
+    $CT:result
+
+  Status:
+    200 Ok
+  Content-Type:
+    &Accept
+
+
+GET
++++
+
+Fetch `:path` contents.
+
+Spec: ::
+
+  Accept:
+    application/octet-stream
+
+  Status:
+    200 Ok
+  Content-Type:
+    &Accept
+
+Example: ::
+
+  < GET /appliances/123/files/data/etc/shells
+  < Accept: application/octet-stream
+
+  > 200 Ok
+  > Content-Type: application/octet-stream
+  > Content-Length: 6
+  >
+  > /bin/sh
+
+PUT
++++
+
+Set `:path` contents.
+
+Spec: ::
+
+  Accept:
+    application/octet-stream
+  Content-Type:
+    application/octet-stream
+
+  Status:
+    200 Ok
+  | 204 No Content
+  Content-Type:
+    &Accept
+
+Example: ::
+
+  < GET /appliances/123/files/data/etc/shells
+  < Accept: application/octet-stream
+
+  > 200 Ok
+  > Content-Type: application/octet-stream
+  > Content-Length: 7
+  >
+  > /bin/sh
+

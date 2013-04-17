@@ -19,4 +19,71 @@ See `Media Types`_.
 Methods
 *******
 
-WIP
+GET
++++
+
+Fetch `:path` metadata.
+
+Spec: ::
+
+  Accept:
+    $CT:file-info
+
+  Status:
+    200 Ok
+  Content-Type:
+    &Accept
+
+Example: ::
+
+  < GET /appliances/123/files/info/etc/shells
+  < Accept: $CT:file-info
+
+  > 200 Ok
+  > Content-Type: $CT:file-info
+  >
+  > {
+  >   "owner": "tux"
+  > , "group": "users"
+  > , "perms": "4750"
+  > }
+
+PUT
++++
+
+Set `:path` metadata.
+
+Spec: ::
+
+  Accept:
+    $CT:file-info
+
+  Status:
+    200 Ok
+  | 204 No Content
+  Content-Type:
+    &Accept
+
+Example: ::
+
+  < PUT /appliances/123/files/info/etc/shells
+  < Content-Type: $CT:file-info
+  <
+  < {
+  <   "path":  "/etc/shells"
+  < , "owner": "root"
+  < , "group": "root"
+  < , "perms": "0644"
+  < }
+
+  > 200 Ok
+  < Content-Location: /appliances/123/files/info/etc/shells
+  > Content-Type: $CT:file-info
+  >
+  > {
+  >   "path":  "/etc/shells"
+  > , "owner": "root"
+  > , "group": "root"
+  > , "perms": "0644"
+  > }
+
