@@ -1,0 +1,103 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+==============================
+/appliances/:app/configuration
+==============================
+
+.. contents::
+
+
+Media Types
+***********
+
+See `Media Types`_.
+
+.. _`Media Types`: ../../media-types.rest
+
+
+Methods
+*******
+
+GET
++++
+
+Describe configuration of an appliance.
+
+Spec: ::
+
+  Accept:
+    $CT:appliance-config
+
+  Content-Type:
+    &Accept
+
+Example: ::
+
+  < GET /appliances/123/configuration
+  < Accept: $CT:appliance-config
+
+  > 200 Ok
+  > Content-Type: $CT:appliance-config
+  >
+  > ...
+
+PATCH
++++++
+
+Modify the configuration of an appliance.
+
+Spec: ::
+
+  Content-Type:
+    $CT:appliance-config-patch
+  Accept:
+    $CT:appliance-config
+
+  Status:
+    200 Ok
+  | 412 Precondition Failed
+  Content-Type:
+    &Accept
+
+Example: ::
+
+  < PATCH /appliances/123/configuration
+  < Content-Type: $CT:appliance-config-patch
+  < Accept: $CT:appliance-config
+
+  > 200 Ok
+  > Content-Type: $CT:appliance-config
+  >
+  > ...
+
+PUT
++++
+
+Set configuration of an appliance.
+
+Spec: ::
+
+  Accept:
+    $CT:appliance-config
+  Content-Type:
+    $CT:appliance-config
+
+  Status:
+    200 Ok
+  Content-Type:
+    &Accept
+
+Example: ::
+
+  < PUT /appliances/123/configuration
+  < Accept: $CT:appliance-config
+  < Content-Type: $CT:appliance-config
+  <
+  < ...
+
+  > 200 Ok
+  > Content-Type: $CT:appliance-config
+  >
+  > ...
+

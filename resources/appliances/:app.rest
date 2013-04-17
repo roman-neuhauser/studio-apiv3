@@ -63,8 +63,7 @@ Describe the latest version of an appliance.
 Spec: ::
 
   Accept:
-    $CT:appliance-config
-  | $CT:appliance-status
+    $CT:appliance-description
 
   Content-Type:
     &Accept
@@ -72,54 +71,12 @@ Spec: ::
 Example: ::
 
   < GET /appliances/123
-  < Accept: $CT:appliance-config
+  < Accept: $CT:appliance-description
 
   > 200 Ok
-  > Content-Type: $CT:appliance-config
+  > Content-Type: $CT:appliance-description
   >
   > ...
-
-PATCH
-+++++
-
-Modify the configuration of an appliance.
-
-Spec: ::
-
-  Content-Type:
-    $CT:appliance-config-patch
-  Accept:
-    $CT:appliance-config
-  | $CT:appliance-status
-  Prefer:
-    return=minimal
-
-  Status:
-    200 Ok
-  | 204 No Content
-  | 409 Conflict
-  | 412 Precondition Failed
-  Content-Type:
-    &Accept
-
-Example: ::
-
-  < PATCH /appliances/123
-  < Content-Type: $CT:appliance-config-patch
-  < Accept: $CT:appliance-config
-
-  > 200 Ok
-  > Content-Type: $CT:appliance-config
-  >
-  > ...
-
-Example: ::
-
-  < PATCH /appliances/123
-  < Content-Type: $CT:appliance-config-patch
-  < Prefer: return=minimal
-
-  > 204 No Content
 
 POST
 ++++

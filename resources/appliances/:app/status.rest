@@ -1,0 +1,44 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+=======================
+/appliances/:app/status
+=======================
+
+.. contents::
+
+
+Media Types
+***********
+
+See `Media Types`_.
+
+.. _`Media Types`: ../../media-types.rest
+
+
+Methods
+*******
+
+GET
++++
+
+Describe the status of an appliance.
+
+Spec: ::
+
+  Accept:
+    $CT:appliance-status
+
+  Content-Type:
+    &Accept
+
+Example: ::
+
+  < GET /appliances/123/status
+  < Accept: $CT:appliance-status
+
+  > 200 Ok
+  > Content-Type: $CT:appliance-status
+  >
+  > ...
+

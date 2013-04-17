@@ -7,12 +7,14 @@ User-oriented resources
 
 * `/appliances`_
 * `/appliances/:app`_
+* `/appliances/:app/configuration`_
 * `/appliances/:app/files/data/:path`_
 * `/appliances/:app/files/info/:path`_
 * `/appliances/:app/gpg_keys`_
 * `/appliances/:app/gpg_keys/:key`_
 * `/appliances/:app/repositories`_
 * `/appliances/:app/repositories/:name`_
+* `/appliances/:app/status`_
 * `/appliances/:app/:version`_
 * `/appliances/:app/:version/:format`_
 * `/repositories`_
@@ -25,6 +27,8 @@ User-oriented resources
 
 .. _`/appliances`:              resources/appliances.rest
 .. _`/appliances/:app`:         resources/appliances/:app.rest
+.. _`/appliances/:app/configuration`:
+    resources/appliances/:app.rest
 .. _`/appliances/:app/files/data/:path`:
     resources/appliances/:app/files/data/:path.rest
 .. _`/appliances/:app/files/info/:path`:
@@ -37,6 +41,8 @@ User-oriented resources
     resources/appliances/:app/repositories.rest
 .. _`/appliances/:app/repositories/:name`:
     resources/appliances/:app/repositories/:name.rest
+.. _`/appliances/:app/status`:
+    resources/appliances/:app/status.rest
 .. _`/appliances/:app/:version`:
     resources/appliances/:app/:version.rest
 .. _`/appliances/:app/:version/:format`:
