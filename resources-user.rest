@@ -29,7 +29,7 @@ User-oriented resources
 .. _`/appliances`:              resources/appliances.rest
 .. _`/appliances/:app`:         resources/appliances/:app.rest
 .. _`/appliances/:app/configuration`:
-    resources/appliances/:app.rest
+    resources/appliances/:app/configuration.rest
 .. _`/appliances/:app/files/data/:path`:
     resources/appliances/:app/files/data/:path.rest
 .. _`/appliances/:app/files/info/:path`:
