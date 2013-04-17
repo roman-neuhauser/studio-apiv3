@@ -25,21 +25,111 @@ GET
 
 List packages and patterns included in the appliance.
 
+Spec: ::
+
+  Accept:
+    $CT:appliance-software
+
+  Status:
+    200 Ok
+  Content-Type:
+    &Accept
+
+Example: ::
+
+  < GET /software/123/selected
+
+  > 200 Ok
+  > Content-Type: $CT:appliance-software
+  >
+  > {
+  >   "packages": {
+  >     "rxvt": {}
+  >   , "tmux": { "from": "/repositories/openSUSE-12.3-packman" }
+  >   }
+  >   "patterns": {}
+  > }
 
 PATCH
 +++++
 
 Modify the list packages and patterns included in the appliance.
 
+Spec: ::
 
-POST
-++++
+  Accept:
+    $CT:appliance-software
+  Content-Type:
+    $CT:appliance-software-change
 
-Add packages and patterns included in the appliance.
+  Status:
+    200 Ok
+  Content-Type:
+    &Accept
 
+Example: ::
+
+  < PATCH /software/123/selected
+  < Content-Type: $CT:appliance-software-change
+  < Accept: $CT:appliance-software
+  <
+  < [
+  <   { "op": "remove"
+  <   , "path": "/packages/rxvt"
+  <   }
+  <   { "op": "add"
+  <   , "path": "/packages/rxvt-unicode"
+  <   , "value": {}
+  <   }
+  < ]
+
+  > 200 Ok
+  > Content-Type: $CT:appliance-software
+  >
+  > {
+  >   "packages": {
+  >     "rxvt-unicode": {}
+  >   , "tmux": { "from": "/repositories/openSUSE-12.3-packman" }
+  >   }
+  >   "patterns": {}
+  > }
 
 PUT
 +++
 
 Set packages and patterns included in the appliance.
+
+Spec: ::
+
+  Accept:
+    $CT:appliance-software
+  Content-Type:
+    $CT:appliance-software
+
+  Status:
+    200 Ok
+  Content-Type:
+    &Accept
+
+Example: ::
+
+  < PUT /software/123/selected
+  < Content-Type: $CT:appliance-software
+  <
+  < {
+  <   "packages": [
+  <     "tmux": { "from": "/repositories/openSUSE-12.3-packman" }
+  <   ]
+  <   "patterns": []
+  < }
+
+  > 200 Ok
+  > Content-Type: $CT:appliance-software
+  >
+  > {
+  >   "packages": [
+  >     "tmux": { "from": "/repositories/openSUSE-12.3-packman" }
+  >   ]
+  >   "patterns": []
+  > }
 
