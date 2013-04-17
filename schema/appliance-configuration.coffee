@@ -80,14 +80,13 @@ defs:
   package:
     type: "object"
     properties:
-      name:     type: "string"
-      repository: "TBD"
+      version:  type: "string"
+      from:     $ref: "#/defs/uri"
 
   pattern:
     type: "object"
     properties:
-      name:     type: "string"
-      repository: "TBD"
+      from:     $ref: "#/defs/uri"
 
   "network-port":
     type: "integer"
@@ -202,11 +201,16 @@ properties:
       build:    $ref: "#/defs/script"
 
   software:
+    type: "object"
     properties:
       packages:
-        type: "array", items: $ref: "#/defs/package"
+        type: "object"
+        patternProperties:
+          "^\w+[-+\w]*$": $ref: "#/defs/package"
       patterns:
-        type: "array", items: $ref: "#/defs/pattern"
+        type: "object"
+        patternProperties:
+          "^\w+[-+\w]*$": $ref: "#/defs/pattern"
       repositories:
         type: "array", items: $ref: "#/defs/repository"
 
