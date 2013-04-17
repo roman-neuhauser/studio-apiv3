@@ -19,4 +19,47 @@ See `Media Types`_.
 Methods
 *******
 
-WIP
+DELETE
+++++++
+
+Example: ::
+
+  < DELETE /appliances/123/gpg_keys/testkey
+  < Accept: $CT:result
+
+  > 200 Ok
+  > Content-Type: $CT:result
+
+GET
++++
+
+Example: ::
+
+  < GET /appliances/123/gpg_keys/testkey
+  < Accept: $CT:gpg-key
+
+  > 200 Ok
+  > Content-Type: $CT:gpg-key
+  >
+  > {
+  >   "name": "testkey"
+  > , "target": "rpm"
+  > , "key": "-----BEGIN PGP PUBLIC KEY BLOCK-----..."
+  > }
+
+PUT
++++
+
+Example: ::
+
+  < PUT /appliances/123/gpg_keys/testkey
+  < Content-Type: $CT:gpg-key
+  <
+  < {
+  <   "name": "testkey"
+  < , "target": "rpm"
+  < , "key": "-----BEGIN PGP PUBLIC KEY BLOCK-----..."
+  < }
+
+  > 204 No Content
+

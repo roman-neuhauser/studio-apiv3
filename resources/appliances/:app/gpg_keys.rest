@@ -19,4 +19,72 @@ See `Media Types`_.
 Methods
 *******
 
-WIP
+GET
++++
+
+List GPG keys of an appliance.
+
+Spec: ::
+
+  Accept:
+    $CT:gpg-keys
+
+  Status:
+    200 Ok
+  Content-type:
+    &Accept
+
+Example: ::
+
+  < GET /appliances/123/gpg_keys
+  < Accept: $CT:gpg-keys
+
+  > 200 Ok
+  > Content-Type: $CT:gpg-keys
+  >
+  > {
+  >   {
+  >     "name": "testkey"
+  >   , "target": "rpm"
+  >   , "key": "-----BEGIN PGP PUBLIC KEY BLOCK-----..."
+  >   }
+  > }
+
+POST
+++++
+
+Upload a GPG key into an appliance.
+
+Spec: ::
+
+  Accept:
+    $CT:gpg-keys
+  Content-Type:
+    $CT:gpg-key
+
+  Status:
+    200 Ok
+  Content-type:
+    &Accept
+
+Example: ::
+
+  < POST /appliances/123/gpg_keys
+  < Content-Type: $CT:gpg-key
+  <
+  < {
+  <   "name": "testkey"
+  < , "target": "rpm"
+  < , "key": "-----BEGIN PGP PUBLIC KEY BLOCK-----..."
+  < }
+
+  > 200 Ok
+  >
+  > {
+  >   {
+  >     "name": "testkey"
+  >   , "target": "rpm"
+  >   , "key": "-----BEGIN PGP PUBLIC KEY BLOCK-----..."
+  >   }
+  > }
+
