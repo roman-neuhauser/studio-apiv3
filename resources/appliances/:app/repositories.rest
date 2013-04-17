@@ -25,9 +25,76 @@ GET
 
 List repositories used for the appliance.
 
+Spec: ::
+
+  Accept: $CT:appliance-repositories
+
+  Status:
+    200 Ok
+  Content-Type:
+    &Accept
+
+Example: ::
+
+  < GET /appliances/123/repositories
+  < Accept: $CT:appliance-repositories
+
+  > 200 Ok
+  > Content-Type: $CT:appliance-repositories
+  >
+  > {
+  >   {
+  >     "name": "openSUSE-12.3-oss"
+  >   , "url": "http://..."
+  >   }
+  > , {
+  >     "name": "openSUSE-12.3-non-oss"
+  >   , "url": "http://..."
+  >   }
+  > }
 
 POST
 ++++
 
 Add a repository into the appliance.
+
+Spec: ::
+
+  Accept:
+    $CT:appliance-repositories
+  Content-Type:
+    $CT:appliance-repository
+
+  Status:
+    200 Ok
+  Content-Type:
+    &Accept
+
+Example: ::
+
+  < POST /appliances/123/repositories
+  < Content-Type: $CT:appliance-repository
+  <
+  < {
+  <   "name": "openSUSE-12.3-update"
+  < , "url": "http://..."
+  < }
+
+  > 200 Ok
+  > Content-Type: $CT:appliance-repositories
+  >
+  > {
+  >   {
+  >     "name": "openSUSE-12.3-oss"
+  >   , "url": "http://..."
+  >   }
+  > , {
+  >     "name": "openSUSE-12.3-non-oss"
+  >   , "url": "http://..."
+  >   }
+  > , {
+  >     "name": "openSUSE-12.3-update"
+  >   , "url": "http://..."
+  >   }
+  > }
 
