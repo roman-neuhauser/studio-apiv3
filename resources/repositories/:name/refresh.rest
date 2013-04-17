@@ -24,3 +24,9 @@ POST
 
 Update package metadata for a repository.
 
+Example: ::
+
+  POST /repositories/openSUSE-12.3-oss/refresh
+
+  202 Accepted
+

@@ -40,5 +40,15 @@ Example: ::
   > 200 Ok
   > Content-Type: $CT:appliance-status
   >
-  > ...
-
+  > {
+  >   "state": "error"
+  > , "issues": [
+  >     { "type": "error"
+  >     , "text": "You must include a kernel package in your appliance."
+  >     , "solution": {
+  >         "type": "install"
+  >       , "package": "kernel-default"
+  >       }
+  >     }
+  >   ]
+  > }

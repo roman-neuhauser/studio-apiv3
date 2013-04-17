@@ -57,9 +57,10 @@ Example: ::
 
   > 200 Ok
   > Content-Type: application/octet-stream
-  > Content-Length: 6
+  > Content-Length: 17
   >
   > /bin/sh
+  > /bin/zsh
 
 PUT
 +++
@@ -83,10 +84,15 @@ Example: ::
 
   < GET /appliances/123/files/data/etc/shells
   < Accept: application/octet-stream
+  < Content-Length: 18
+  <
+  < /bin/sh
+  < /bin/bash
 
   > 200 Ok
   > Content-Type: application/octet-stream
-  > Content-Length: 7
+  > Content-Length: 18
   >
   > /bin/sh
+  > /bin/bash
 

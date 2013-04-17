@@ -56,7 +56,18 @@ Example: ::
   > , "avg-load": "0.5"
   > , "arch": "x86_64"
   > , "last-pinged": "2013-04-05T11:44:59Z"
-  >   ...
+  > , "capacity": {
+  >     "kiwi": 1
+  >   , "testdrive": 2
+  >   , "amazon": 0
+  >   , "azure": 0
+  >   }
+  > , "running": {
+  >     "kiwi": 1
+  >   , "testdrive": 2
+  >   , "amazon": 0
+  >   , "azure": 0
+  >   }
   > }
 
 PATCH
