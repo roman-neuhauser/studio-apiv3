@@ -30,9 +30,63 @@ GET
 
 Fetch information about a repository.
 
+Spec: ::
+
+  Accept:
+    $CT:repository
+
+  Status:
+    200 Ok
+  Content-Type:
+    &Accept
+
+Example: ::
+
+  < GET /repositories/openSUSE-12.3-oss
+
+  > 200 Ok
+  > Content-Type: $CT:repository
+  >
+  > {
+  >   "name": "openSUSE-12.3-oss"
+  > , "url": "http://.../"
+  > }
+
 
 PUT
 +++
 
 Import a repository, possibly overwriting.
 
+Spec: ::
+
+  Content-Type:
+    $CT:repository
+  Accept:
+    $CT:repository
+
+  Status:
+    200 Ok
+  Content-Type:
+    &Accept
+  Content-Location:
+    $URI
+
+Example: ::
+
+  < PUT /repositories/openSUSE-12.3-oss
+  < Content-Type: $CT:repository
+  <
+  < {
+  <   "name": "openSUSE-12.3-oss"
+  < , "url": "http://.../"
+  < }
+
+  > 200 Ok
+  > Content-Type: $CT:repository
+  > Content-Location: /repositories/openSUSE-12.3-oss
+  >
+  > {
+  >   "name": "openSUSE-12.3-oss"
+  > , "url": "http://.../"
+  > }

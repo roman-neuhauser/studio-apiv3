@@ -41,3 +41,35 @@ POST
 
 Import one or more repositories.
 
+Spec: ::
+
+  Content-Type:
+    $CT:repository
+  Accept:
+    $CT:repository
+
+  Status:
+    200 Ok
+  Content-Type:
+    &Accept
+  Content-Location:
+    $URI
+
+Example: ::
+
+  < POST /repositories
+  < Content-Type: $CT:repository
+  <
+  < {
+  <   "name": "openSUSE-12.3-oss"
+  < , "url": "http://.../"
+  < }
+
+  > 200 Ok
+  > Content-Type: $CT:repository
+  > Content-Location: /repositories/openSUSE-12.3-oss
+  >
+  > {
+  >   "name": "openSUSE-12.3-oss"
+  > , "url": "http://.../"
+  > }
