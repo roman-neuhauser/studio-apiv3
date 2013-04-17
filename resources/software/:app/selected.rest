@@ -47,7 +47,7 @@ Example: ::
   >     "rxvt": {}
   >   , "tmux": { "from": "/repositories/openSUSE-12.3-packman" }
   >   }
-  >   "patterns": {}
+  > , "patterns": {}
   > }
 
 PATCH
@@ -77,7 +77,7 @@ Example: ::
   <   { "op": "remove"
   <   , "path": "/packages/rxvt"
   <   }
-  <   { "op": "add"
+  < , { "op": "add"
   <   , "path": "/packages/rxvt-unicode"
   <   , "value": {}
   <   }
@@ -117,19 +117,19 @@ Example: ::
   < Content-Type: $CT:appliance-software
   <
   < {
-  <   "packages": [
+  <   "packages": {
   <     "tmux": { "from": "/repositories/openSUSE-12.3-packman" }
-  <   ]
-  <   "patterns": []
+  <   }
+  < , "patterns": {}
   < }
 
   > 200 Ok
   > Content-Type: $CT:appliance-software
   >
   > {
-  >   "packages": [
+  >   "packages": {
   >     "tmux": { "from": "/repositories/openSUSE-12.3-packman" }
-  >   ]
-  >   "patterns": []
+  >   }
+  > , "patterns": {}
   > }
 
