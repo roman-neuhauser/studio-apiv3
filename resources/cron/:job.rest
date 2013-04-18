@@ -24,18 +24,54 @@ DELETE
 
 Drop a cron job.
 
+Example: ::
+
+  < DELETE /cron/process_queues
+
+  > 204 No Content
+
 GET
 +++
 
 Show info on a cron job.
+
+Example: ::
+
+  < GET /cron/process_queues
+
+  > 200 Ok
+  >
+  > {
+  >   frequency: 1
+  > , since: "2008-08-04T11:51:00Z"
+  > , enabled: true
+  > }
 
 POST
 ++++
 
 Run a cron job.
 
+Example: ::
+
+  < POST /cron/process_queues
+
+  > 202 Accepted
+
 PUT
 +++
 
 Create a cron job.
+
+Example: ::
+
+  < PUT /cron/cleanup_shared_tmp
+  <
+  < {
+  <   frequency: 86400
+  < , since: "2013-05-01T03:15:00Z"
+  < , enabled: true
+  < }
+
+  > 204 No Content
 
