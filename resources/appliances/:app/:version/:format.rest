@@ -54,20 +54,3 @@ Spec: ::
   Content-Disposition:
     FILENAME
 
-POST
-++++
-
-Spec: ::
-
-  Content-Type:
-    $CT:testdrive
-  Accept:
-    &Content-Type
-
-  Status:
-    202 Accepted
-  Content-Type:
-    &Accept
-  Location:
-    /testdrives/:token                     ; /testdrives/sNa6Fu9BaR
-

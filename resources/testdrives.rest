@@ -1,0 +1,100 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+===========
+/testdrives
+===========
+
+.. contents::
+
+
+Media Types
+***********
+
+See `Media Types`_.
+
+.. _`Media Types`: ../../media-types.rest
+
+
+Methods
+*******
+
+GET
++++
+
+List running testdrives.
+
+Spec: ::
+
+  Accept:
+    $CT:testdrives
+
+  Status:
+    200 Ok
+  Content-Type:
+    &Accept
+
+Example: ::
+
+  GET /testdrives
+  Accept: $CT:testdrives
+
+  200 Ok
+  Content-Type: $CT:testdrives
+
+  [
+    {
+      "build": "/appliances/123/4.5.6/oem"
+      "vnc": {
+        "host": "node77.susestudio.com"
+      , "port": 5900
+      , "password": "AbRacADaBrA"
+      }
+    }
+  ]
+
+
+POST
+++++
+
+Start a testdrive.
+
+Spec: ::
+
+  Content-Type:
+    $CT:testdrive-request
+  Accept:
+    $CT:testdrive
+
+  Status:
+    200 Ok
+  Content-Type:
+    &Accept
+  Content-Location:
+    $URI
+
+Example: ::
+
+  < POST /testdrives
+  < Accept: $CT:testdrive
+  < Content-Type: $CT:testdrive-request
+  <
+  < {
+  <   "build": "/appliances/123/4.5.6/oem"
+  < }
+
+  > 200 Ok
+  > Content-Type: $CT:testdrive
+  > Content-Location: /testdrives/rAnDoM
+  >
+  >
+  > {
+  >   "build": "/appliances/123/4.5.6/oem"
+  >   "url": "http://node77.susestudio.com/testdrive/start/O5QPQkNNab6DskxVUJWd?lang=en"
+  >   "vnc": {
+  >     "host": "node77.susestudio.com"
+  >   , "port": 5900
+  >   , "password": "AbRacADaBrA"
+  >   }
+  > }
+
