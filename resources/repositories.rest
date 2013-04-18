@@ -34,7 +34,12 @@ Example: ::
   > 200 Ok
   > Content-Type: $CT:repositories
   >
-  > ...
+  > [
+  >   {
+  >     "name": "openSUSE-12.3-oss"
+  >   , "url": "http://.../"
+  >   }
+  > ]
 
 POST
 ++++
