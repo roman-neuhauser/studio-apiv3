@@ -24,21 +24,56 @@ GET
 
 List packages banned from the appliance.
 
+Example: ::
+
+  < GET /software/123/banned
+
+  > 200 Ok
+  >
+  > [
+  >   "gnome"
+  > , "kde4"
+  > ]
 
 PATCH
 +++++
 
 Modify the list packages and patterns included in the appliance.
 
+Example: ::
 
-POST
-++++
+  < PATCH /software/123/banned
+  <
+  < [
+  <   { "op": "add", "path": "/-", "value": "e17" }
+  < ]
 
-Add packages banned from the appliance.
-
+  > 200 Ok
+  >
+  > [
+  >   "e17"
+  > , "gnome"
+  > , "kde4"
+  > ]
 
 PUT
 +++
 
 Set packages banned from the appliance.
+
+Example: ::
+
+  < PUT /software/123/banned
+  <
+  < [
+  <   "gnome"
+  < , "kde4"
+  < ]
+
+  > 200 Ok
+  >
+  > [
+  >   "gnome"
+  > , "kde4"
+  > ]
 
