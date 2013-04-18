@@ -16,6 +16,9 @@ See `Media Types`_.
 .. _`Media Types`: ../../media-types.rest
 
 
+Methods
+*******
+
 DELETE
 ++++++
 
@@ -30,6 +33,18 @@ Spec: ::
   Content-Type:
     &Accept
 
+Example: ::
+
+  < DELETE /testdrives/rAnDoM
+  < Accept: $CT:result
+
+  > 200 Ok
+  > Content-Type: $CT:result
+
+  > {
+  >   "result": "ok"
+  > }
+
 GET
 +++
 
@@ -43,3 +58,20 @@ Spec: ::
   Content-Type:
     &Accept
 
+Example: ::
+
+  < GET /testdrives/rAnDoM
+  < Accept: $CT:testdrive
+
+  > 200 Ok
+  > Content-Type: $CT:testdrive
+  >
+  > {
+  >   "build": "/appliances/123/4.5.6/oem"
+  >   "url": "http://node77.susestudio.com/testdrive/start/O5QPQkNNab6DskxVUJWd?lang=en"
+  >   "vnc": {
+  >     "host": "node77.susestudio.com"
+  >   , "port": 5900
+  >   , "password": "AbRacADaBrA"
+  >   }
+  > }
