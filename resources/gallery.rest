@@ -1,0 +1,97 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+=============
+/gallery/:app
+=============
+
+.. contents::
+
+
+Media Types
+***********
+
+See `Media Types`_.
+
+.. _`Media Types`: ../../media-types.rest
+
+
+Methods
+*******
+
+
+GET
++++
+
+List published appliances meeting given criteria.
+
+Spec: ::
+
+  query:
+    type: 'string', enum: ['latest', 'popular', 'author', 'search']
+  criteria:
+    type: 'string'
+  
+Example: ::
+
+  < GET /gallery
+  <
+  < {
+  <   query: "latest"
+  < }
+
+  > 200 Ok
+  >
+  > {
+  >   appliances: [
+  >     {
+  >       uri: "/gallery/22"
+  >       name: "Matt's Amazing JeOS"
+  >       publisher: "Matt Barringer"
+  >       username: "mbarringer"
+  >       homepage: "http://susestudio.com"
+  >       description: "THIS IS AN AWESOME JEOS APPLIANCE DOWNLOAD"
+  >       ratings: "2"
+  >       average_rating: "3.0"
+  >       comments: "2"
+  >       based_on: "11.3"
+  >       date: "2010-11-03 13:57:02 UTC"
+  >     }
+  >     {
+  >       id: "/gallery/25"
+  >       name: "The Greatest JeOS EVER"
+  >       publisher: "SUSE Studio Team"
+  >       username: "steam"
+  >       homepage: ""
+  >       description: ""
+  >       ratings: "0"
+  >       average_rating: "0.0"
+  >       comments: "0"
+  >       based_on: "11.3"
+  >       date: "2010-10-15 11:28:00 UTC"
+  >     }
+  >   ]
+  > }
+
+  < GET /gallery
+  <
+  < {
+  <   query: "search"
+  < , criteria: "AWESOME"
+  < }
+
+  > 200 Ok
+  >
+  > {
+  >   appliances: [
+  >     {
+  >       uri: "/gallery/22"
+  >       name: "Matt's Amazing JeOS"
+  >       publisher: "Matt Barringer"
+  >       username: "mbarringer"
+  >       homepage: "http://susestudio.com"
+  >       description: "THIS IS AN AWESOME JEOS APPLIANCE DOWNLOAD"
+  >       ...
+  >     }
+  >   ]
+
