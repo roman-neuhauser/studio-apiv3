@@ -1,0 +1,53 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+====================================
+/admin/base-repositories/:base/:repo
+====================================
+
+.. contents::
+
+
+Methods
+*******
+
+
+GET
++++
+
+Retrieve information about a base repository.
+
+Example: ::
+
+  < GET /admin/base-repositories/12.3/openSUSE-12.3-OSS
+
+  > 200 Ok
+  >
+  > {
+  >   uri: "/admin/base-repositories/..."
+  > , name: "openSUSE 12.3 OSS"
+  > , url: "http://download.opensuse.org/distribution/12.3/repo/oss/"
+  > , enabled: true
+  > }
+
+
+POST
+++++
+
+Enable or disable a base repository.
+
+Example: ::
+
+  < POST /admin/base-repositories/12.3/openSUSE-12.3-non-OSS
+  <
+  < { enabled: false }
+
+  > 200 Ok
+  >
+  > {
+  >   uri: "/admin/base-repositories/..."
+  > , name: "openSUSE 12.3 non-OSS"
+  > , url: "http://download.opensuse.org/distribution/12.3/repo/non-oss/"
+  > , enabled: false
+  > }
+

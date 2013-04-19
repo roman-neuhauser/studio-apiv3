@@ -1,9 +1,9 @@
 .. vim: ft=rst sts=2 sw=2 tw=70
 .. default-role:: literal
 
-========================
-/admin/base-repositories
-========================
+==============================
+/admin/base-repositories/:base
+==============================
 
 .. contents::
 
@@ -14,11 +14,11 @@ Methods
 GET
 +++
 
-List base repositories.
+List base repositories for a base system.
 
 Example: ::
 
-  GET /admin/base-repositories
+  GET /admin/base-repositories/12.3
 
   200 Ok
 
@@ -43,20 +43,4 @@ Example: ::
       , enabled: true
       }
     ]
-  , "SLES_11_SP2": [
-      {
-        uri: "/admin/base-repositories/..."
-      , name: "SLES 11 SP2 x86_64"
-      , url: "http://..."
-      , enabled: true
-      }
-    , {
-        uri: "/admin/base-repositories/..."
-      , name: "SLES 11 SP2 Updates x86_64"
-      , url: "http://..."
-      , enabled: true
-      }
-    ]
-  # ...
   }
-
