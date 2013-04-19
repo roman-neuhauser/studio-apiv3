@@ -47,7 +47,7 @@ Example: ::
 POST
 ++++
 
-Queue a build.
+Queue a build or KIWI export.
 
 Spec: ::
 
@@ -66,31 +66,69 @@ Spec: ::
 Example: ::
 
   < POST /builds/queued
-  < Content-Type: $CT:build-request
   <
   < {
   <   "appliance": "/appliances/123"
   < , "format": "oem"
+  < , "type": "image"
   < }
 
   > 200 Ok
-  > Content-Type: $CT:builds-queued
   >
   > {
   >   {
   >     "appliance": "/appliances/123"
   >   , "format": "iso"
+  >   , "type": "image"
   >   , "queued": "2013-04-16T11:23:45Z"
   >   }
   > , {
   >     "appliance": "/appliances/123"
   >   , "format": "xen"
+  >   , "type": "image"
   >   , "queued": "2013-04-16T11:23:45Z"
   >   }
   > , {
   >     "appliance": "/appliances/123"
   >   , "format": "oem"
+  >   , "type": "kiwi"
   >   , "queued": "2013-04-17T09:11:23Z"
+  >   }
+  > }
+
+  < POST /builds/queued
+  <
+  < {
+  <   "appliance": "/appliances/123"
+  < , "format": "vmx"
+  < , "type": "kiwi"
+  < }
+
+  > 200 Ok
+  >
+  > {
+  >   {
+  >     "appliance": "/appliances/123"
+  >   , "format": "iso"
+  >   , "type": "image"
+  >   , "queued": "2013-04-16T11:23:45Z"
+  >   }
+  > , {
+  >     "appliance": "/appliances/123"
+  >   , "format": "xen"
+  >   , "type": "image"
+  >   , "queued": "2013-04-16T11:23:45Z"
+  >   }
+  > , {
+  >     "appliance": "/appliances/123"
+  >   , "format": "oem"
+  >   , "type": "kiwi"
+  >   , "queued": "2013-04-17T09:11:23Z"
+  >   }
+  > , {
+  >     "appliance": "/appliances/123"
+  >   , "format": "vmx"
+  >   , "type": "kiwi"
   >   }
   > }
 
