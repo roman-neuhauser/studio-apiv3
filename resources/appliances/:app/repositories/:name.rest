@@ -17,3 +17,8 @@ DELETE
 
 Delete a repository from the appliance.
 
+Example: ::
+
+  < DELETE /appliances/123/repositories/openSUSE-12.3-oss
+
+  > 204 No Content
