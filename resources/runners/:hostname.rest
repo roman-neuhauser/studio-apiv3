@@ -8,13 +8,8 @@
 .. contents::
 
 
-Media Types
-***********
-
-See `Media Types`_.
-
-.. _`Media Types`: ../../media-types.rest
-
+Methods
+*******
 
 DELETE
 ++++++
