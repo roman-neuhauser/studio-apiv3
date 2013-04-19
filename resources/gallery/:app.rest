@@ -1,0 +1,116 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+=============
+/gallery/:app
+=============
+
+.. contents::
+
+
+Media Types
+***********
+
+See `Media Types`_.
+
+.. _`Media Types`: ../../media-types.rest
+
+
+Methods
+*******
+
+
+DELETE
+++++++
+
+Unpublish an appliance from the gallery.
+
+Example: ::
+
+  < DELETE /gallery/123
+
+  > 204 No Content
+
+GET
++++
+
+Retrieve information about a published appliance.
+
+Example: ::
+
+  < GET /gallery/123
+
+  > 200 Ok
+  >
+  > {
+  >   name: "miniSUSE"
+  > , version: "12.1.0"
+  > , release_notes: "..."
+  > , publisher: "hgj"
+  > , username: "hgj"
+  > , based_on: "12.1"
+  > , formats: {
+  >     "iso": "8acdc62543392e36581ac01c61514bc2"
+  >   , "oemiso": "d4ab26eb05e51df285a7001bd729c2d3"
+  >   }
+  > , security: {
+  >     untrusted_repositories: [
+  >       "network-openSUSE_12.1"
+  >     , "hgj openSUSE 12.1"
+  >     ]
+  >   , custom_packages: [
+  >       "aircrack-ng"
+  >     , "chntpw"
+  >     ]
+  >   , overlay_files: {
+  >       executable: false
+  >     , present: true
+  >     }
+  >   }
+  > }
+
+
+POST
+++++
+
+Publish an appliance.
+
+Example: ::
+
+  < POST /gallery
+  <
+  < {
+  <   publish: "/appliances/123/4.5.6"
+  <   release_notes: "..."
+  < }
+
+  > 200 Ok
+  > Content-Location: /gallery/123/4.5.6
+  >
+  > {
+  >   name: "miniSUSE"
+  > , version: "12.1.0"
+  > , release_notes: "..."
+  > , publisher: "hgj"
+  > , username: "hgj"
+  > , based_on: "12.1"
+  > , formats: {
+  >     "iso": "8acdc62543392e36581ac01c61514bc2"
+  >   , "oemiso": "d4ab26eb05e51df285a7001bd729c2d3"
+  >   }
+  > , security: {
+  >     untrusted_repositories: [
+  >       "network-openSUSE_12.1"
+  >     , "hgj openSUSE 12.1"
+  >     ]
+  >   , custom_packages: [
+  >       "aircrack-ng"
+  >     , "chntpw"
+  >     ]
+  >   , overlay_files: {
+  >       executable: false
+  >     , present: true
+  >     }
+  >   }
+  > }
+
