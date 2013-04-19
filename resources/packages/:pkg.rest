@@ -1,0 +1,46 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+==============
+/packages/:pkg
+==============
+
+.. contents::
+
+
+Media Types
+***********
+
+See `Media Types`_.
+
+.. _`Media Types`: media-types.rest
+
+
+Methods
+*******
+
+DELETE
+++++++
+
+Drop a user-uploaded package.
+
+Example: ::
+
+  < DELETE /packages/private-code-1.2.rpm
+
+  > 204 No Content
+
+GET
++++
+
+Retrieve a user-uploaded package.
+
+Example: ::
+
+  < GET /packages/private-code-1.2.rpm
+
+  > 200 Ok
+  > Content-Type: application/x-rpm
+  >
+  > ...
+
