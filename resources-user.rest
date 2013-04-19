@@ -5,8 +5,12 @@
 User-oriented resources
 =======================
 
+
 * `/appliances`_
 * `/appliances/:app`_
+* `/appliances/:app/:version`_
+* `/appliances/:app/:version/:format`_
+* `/appliances/:app/:version/configuration`_
 * `/appliances/:app/configuration`_
 * `/appliances/:app/files/data/:path`_
 * `/appliances/:app/files/info/:path`_
@@ -15,19 +19,34 @@ User-oriented resources
 * `/appliances/:app/repositories`_
 * `/appliances/:app/repositories/:name`_
 * `/appliances/:app/status`_
-* `/appliances/:app/:version`_
-* `/appliances/:app/:version/:format`_
+* `/base-systems`_
 * `/builds/queued`_
+* `/builds/running`_
+* `/gallery`_
+* `/gallery/:app`_
+* `/gallery/:app/:version`_
+* `/gallery/:app/comments`_
+* `/gallery/:app/rating`_
+* `/packages`_
+* `/packages/:pkg`_
 * `/repositories`_
 * `/repositories/:name`_
+* `/repositories/:name/refresh`_
 * `/software/:app/banned`_
 * `/software/:app/selected`_
+* `/testdrives`_
 * `/testdrives/:token`_
 
 [Top_]
 
 .. _`/appliances`:              resources/appliances.rest
 .. _`/appliances/:app`:         resources/appliances/:app.rest
+.. _`/appliances/:app/:version`:
+    resources/appliances/:app/:version.rest
+.. _`/appliances/:app/:version/:format`:
+    resources/appliances/:app/:version/:format.rest
+.. _`/appliances/:app/:version/configuration`:
+    resources/appliances/:app/:version/configuration.rest
 .. _`/appliances/:app/configuration`:
     resources/appliances/:app/configuration.rest
 .. _`/appliances/:app/files/data/:path`:
@@ -44,15 +63,23 @@ User-oriented resources
     resources/appliances/:app/repositories/:name.rest
 .. _`/appliances/:app/status`:
     resources/appliances/:app/status.rest
-.. _`/appliances/:app/:version`:
-    resources/appliances/:app/:version.rest
-.. _`/appliances/:app/:version/:format`:
-    resources/appliances/:app/:version/:format.rest
+.. _`/base-systems`:            resources/base-systems.rest
 .. _`/builds/queued`:           resources/builds/queued.rest
+.. _`/builds/running`:          resources/builds/running.rest
+.. _`/gallery`:                 resources/gallery.rest
+.. _`/gallery/:app`:            resources/gallery/:app.rest
+.. _`/gallery/:app/:version`:   resources/gallery/:app/:version.rest
+.. _`/gallery/:app/comments`:   resources/gallery/:app/comments.rest
+.. _`/gallery/:app/rating`:     resources/gallery/:app/rating.rest
+.. _`/packages`:                resources/packages.rest
+.. _`/packages/:pkg`:           resources/packages/:pkg.rest
 .. _`/repositories`:            resources/repositories.rest
 .. _`/repositories/:name`:      resources/repositories/:name.rest
+.. _`/repositories/:name/refresh`:
+    resources/repositories/:name/refresh.rest
 .. _`/software/:app/banned`:    resources/software/:app/banned.rest
 .. _`/software/:app/selected`:  resources/software/:app/selected.rest
+.. _`/testdrives`:              resources/testdrives.rest
 .. _`/testdrives/:token`:       resources/testdrives/:token.rest
 
 .. _Top: README.rest
