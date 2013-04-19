@@ -8,6 +8,6 @@ sed \
   -e '/^\.\. _.*\.rest$/s/\.rest$/.html/' \
   -e '/^\.\. _.*`:$/{n; s/\.rest$/.html/; }' \
   < $rest | \
-  $rst2html - $html
+  $rst2html --strict - $html
 
 # vim: ft=sh sw=2 ts=2 et
