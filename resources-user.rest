@@ -27,7 +27,9 @@ User-oriented resources
 * `/gallery/:app/comments`_
 * `/gallery/:app/rating`_
 * `/packages`_
-* `/packages/:pkg`_
+* `/packages/:base`_
+* `/packages/:base/:pkg`_
+* `/packages/:base/:pkg/data`_
 * `/repositories`_
 * `/repositories/:name`_
 * `/repositories/:name/refresh`_
@@ -71,7 +73,10 @@ User-oriented resources
 .. _`/gallery/:app/comments`:   resources/gallery/:app/comments.rest
 .. _`/gallery/:app/rating`:     resources/gallery/:app/rating.rest
 .. _`/packages`:                resources/packages.rest
-.. _`/packages/:pkg`:           resources/packages/:pkg.rest
+.. _`/packages/:base`:          resources/packages/:base.rest
+.. _`/packages/:base/:pkg`:     resources/packages/:base/:pkg.rest
+.. _`/packages/:base/:pkg/data`:
+    resources/packages/:base/:pkg/data.rest
 .. _`/repositories`:            resources/repositories.rest
 .. _`/repositories/:name`:      resources/repositories/:name.rest
 .. _`/repositories/:name/refresh`:
