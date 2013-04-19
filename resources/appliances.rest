@@ -24,67 +24,58 @@ GET
 
 List my appliances.
 
-Spec: ::
-
-  Accept:
-    $CT:appliances
-
-  Content-Type:
-    &Accept
-
 Example: ::
 
   < GET /appliances
-  < Accept: $CT:appliances
 
   > 200 Ok
-  > Content-Type: $CT:appliances
   >
-  > ...
+  > [
+  >   {
+  >     uri: "/appliances/123"
+  >   , name: "..."
+  >   , icon: "/theme/logos/..."
+  >   , gallery: "/gallery/123"
+  >   , arch: "x86_64"
+  >   , software: {
+  >       patterns: 3
+  >     , packages: 157
+  >     , repositories: [
+  >         {
+  >           uri: "/repositories/..."
+  >         , name: "openSUSE-12.3-oss"
+  >         , truested: true
+  >         }
+  >       , {
+  >           uri: "/repositories/..."
+  >         , name: "openSUSE-12.3-updates"
+  >         , truested: true
+  >         }
+  >       ]
+  >     }
+  >   }
+  > , {
+  >     uri: "/appliances/169"
+  >   }
+  > ]
 
 POST
 ++++
 
 Create an appliance.
 
-Spec: ::
-
-  Content-Type:
-    $CT:appliance-config
-  | $CT:appliance-clone-request
-  Accept:
-    $CT:appliance-config
-  | $CT:appliance-status
-  | $CT:result
-  Prefer:
-    return=minimal
-
-  Content-Type:
-    &Accept
-  Location:
-    $URI
-
 Example: ::
 
   < POST /appliances
-  < Content-Type: $CT:appliance-clone-request
-  < Accept: $CT:appliance-config
   <
-  < ...
+  < {
+  <   source: "/appliances/1"
+  < , name: "My New Appliance"
+  < , arch: "x86_64"
+  < }
 
   > 201 Created
-  > Location: /appliances/123
-  > Content-Type: $CT:appliance-config
+  > Content-Location: /appliances/123
   >
-  > ...
-
-  < POST /appliances
-  < Content-Type: $CT:appliance-clone-request
-  < Accept: $CT:appliance-result
-
-  > 201 Created
-  > Location: /appliances/123
-  > Content-Type: $CT:appliance-result
-  >
-  > ...
+  > ... see GET /appliances/:app
 
