@@ -58,7 +58,7 @@ Spec: ::
     $CT:appliance-repository
 
   Status:
-    200 Ok
+    201 Created
   Content-Type:
     &Accept
 
@@ -72,7 +72,8 @@ Example: ::
   < , "url": "http://..."
   < }
 
-  > 200 Ok
+  > 201 Created
+  > Location: /appliance/123/repositories/openSUSE-12.3-update
   > Content-Type: $CT:appliance-repositories
   >
   > {
