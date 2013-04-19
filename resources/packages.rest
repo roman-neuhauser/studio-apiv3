@@ -14,6 +14,8 @@ Methods
 GET
 +++
 
+List custom packages for all base systems.
+
 Example: ::
 
   < GET /packages
@@ -22,13 +24,18 @@ Example: ::
   >
   > [
   >   {
-  >     uri: "/packages/12.3"
+  >     uri: "/packages/12.3/private-code-1.2.rpm"
+  >   , download: "/packages/12.3/private-code-1.2.rpm/data"
+  >   , file: "private-code-1.2.rpm"
+  >   , size: 587500
+  >   , arch: "x86_64"
   >   }
   > , {
-  >     uri: "/packages/SLES11_SP1"
-  >   }
-  > , {
-  >     uri: "/packages/noarch"
+  >     uri: "/packages/12.2/libcustom-2.12.x86_64.rpm"
+  >   , download: "/packages/12.3/libcustom-2.12.x86_64.rpm/data"
+  >   , file: "libcustom-2.12.x86_64.rpm"
+  >   , size: 3267345
+  >   , arch: "x86_64"
   >   }
   > ]
 
