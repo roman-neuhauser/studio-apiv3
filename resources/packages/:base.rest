@@ -1,0 +1,62 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+===============
+/packages/:base
+===============
+
+.. contents::
+
+
+Methods
+*******
+
+GET
++++
+
+Example: ::
+
+  < GET /packages/12.3
+
+  > 200 Ok
+  >
+  > [
+  >   {
+  >     uri: "/packages/12.3/private-code-1.2.rpm"
+  >   , download: "/packages/12.3/private-code-1.2.rpm/data"
+  >   , file: "private-code-1.2.rpm"
+  >   , size: 587500
+  >   , arch: "x86_64"
+  >   }
+  > ]
+
+
+POST
+++++
+
+Example: ::
+
+  < POST /packages/12.3
+  < Content-Type: multipart/form-data; boundary=mOsTUgLy
+  <
+  < --mOsTUgLy
+  < content-disposition: form-data; name="name"
+  <
+  < libcustom-2.34.x86_64.rpm
+  < --mOsTUgLy
+  < content-disposition: form-data; name="data"; filename="libcustom-2.34.x86_64.rpm"
+  <
+  < ...
+  < --mOsTUgLy--
+
+  > 201 Created
+  > Location: /packages/12.3/libcustom-2.34.x86_64.rpm
+  >
+  > {
+  >   uri: "/packages/12.3/libcustom-2.34.x86_64.rpm"
+  > , download: "/packages/12.3/libcustom-2.34.x86_64.rpm/data"
+  > , file: "libcustom-2.34.x86_64.rpm"
+  > , size: 3234567
+  > , arch: "x86_64"
+  > }
+

@@ -1,9 +1,9 @@
 .. vim: ft=rst sts=2 sw=2 tw=70
 .. default-role:: literal
 
-==============
-/packages/:pkg
-==============
+=========================
+/packages/:base/:pkg/data
+=========================
 
 .. contents::
 
@@ -11,16 +11,6 @@
 Methods
 *******
 
-DELETE
-++++++
-
-Drop a user-uploaded package.
-
-Example: ::
-
-  < DELETE /packages/private-code-1.2.rpm
-
-  > 204 No Content
 
 GET
 +++
@@ -29,7 +19,7 @@ Retrieve a user-uploaded package.
 
 Example: ::
 
-  < GET /packages/private-code-1.2.rpm
+  < GET /packages/12.3/private-code-1.2.rpm/data
 
   > 200 Ok
   > Content-Type: application/x-rpm

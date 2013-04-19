@@ -1,0 +1,42 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+====================
+/packages/:base/:pkg
+====================
+
+.. contents::
+
+
+Methods
+*******
+
+DELETE
+++++++
+
+Drop a user-uploaded package.
+
+Example: ::
+
+  < DELETE /packages/12.3/private-code-1.2.rpm
+
+  > 204 No Content
+
+
+GET
++++
+
+Retrieve information for a user-uploaded package.
+
+Example: ::
+
+  < GET /packages/12.3/private-code-1.2.rpm
+
+  > 200 Ok
+  >
+  > {
+  >   file: "private-code-1.2.rpm"
+  > , size: 587500
+  > , arch: "x86_64"
+  > }
+

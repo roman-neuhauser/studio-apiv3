@@ -1,0 +1,34 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+=========
+/packages
+=========
+
+.. contents::
+
+
+Methods
+*******
+
+GET
++++
+
+Example: ::
+
+  < GET /packages
+
+  > 200 Ok
+  >
+  > [
+  >   {
+  >     uri: "/packages/12.3"
+  >   }
+  > , {
+  >     uri: "/packages/SLES11_SP1"
+  >   }
+  > , {
+  >     uri: "/packages/noarch"
+  >   }
+  > ]
+
