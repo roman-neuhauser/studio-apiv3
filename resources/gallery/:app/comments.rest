@@ -1,0 +1,97 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+======================
+/gallery/:app/comments
+======================
+
+.. contents::
+
+
+Media Types
+***********
+
+See `Media Types`_.
+
+.. _`Media Types`: ../../media-types.rest
+
+
+Methods
+*******
+
+
+GET
++++
+
+Retrieve comments for a published appliance.
+
+Example: ::
+
+  < GET /gallery/123/comments
+
+  > 200 Ok
+  >
+  > {
+  >   appliance: "/gallery/123"
+  > , comments: [
+  >     {
+  >       id: "3"
+  >     , timestamp: "2010-10-11 14:01:24 UTC"
+  >     , username: "Matt Barringer"
+  >     , text: "This is a comment posted via the API"
+  >     }
+  >   , {
+  >       id: "4"
+  >     , parent_id: "3"
+  >     , timestamp: "2010-10-11 14:02:05 UTC"
+  >     , username: "Matt Barringer"
+  >     , text: "This is a reply to a comment posted via the API"
+  >     }
+  >   ]
+  > }
+
+
+POST
+++++
+
+Rate a published appliance.
+
+Example: ::
+
+  < POST /gallery/123/comments
+  <
+  < {
+  <   parent_id: "4"
+  > , text: "Please do not spam the comments."
+  < }
+
+  > 200 Ok
+  > Content-Location: /gallery/123/comments
+  >
+  > {
+  >   appliance: "/gallery/123"
+  > , comments: [
+  >     {
+  >       id: "3"
+  >     , timestamp: "2010-10-11 14:01:24 UTC"
+  >     , username: "Matt Barringer"
+  >     , text: "This is a comment posted via the API"
+  >     }
+  >   , {
+  >       id: "4"
+  >     , parent_id: "3"
+  >     , timestamp: "2010-10-11 14:02:05 UTC"
+  >     , username: "Matt Barringer"
+  >     , text: "This is a reply to a comment posted via the API"
+  >     }
+  >   ]
+  >   , {
+  >       id: "7"
+  >     , parent_id: "4"
+  >     , timestamp: "2010-10-11 18:15:53 UTC"
+  >     , username: "Joe Random"
+  >     , text: "Please do not spam the comments."
+  >     }
+  >   ]
+  > }
+
