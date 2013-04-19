@@ -26,14 +26,8 @@ Delete an appliance.
 
 Spec: ::
 
-  Accept:
-    $CT:appliance-result
-  Prefer:
-    return=minimal
-
   Status:
-    200 Ok
-  | 204 No Content
+    204 No Content
   | 409 Conflict
   Content-Type:
     &Accept
@@ -41,17 +35,6 @@ Spec: ::
 Example: ::
 
   < DELETE /appliance/123
-  < Accept: $CT:appliance-result
-
-  > 200 Ok
-  > Content-Type: $CT:appliance-result
-  >
-  > ...
-
-Example: ::
-
-  < DELETE /appliance/123
-  < Prefer: return=minimal
 
   > 204 No Content
 
@@ -60,21 +43,16 @@ GET
 
 Describe the latest version of an appliance.
 
-Spec: ::
-
-  Accept:
-    $CT:appliance-description
-
-  Content-Type:
-    &Accept
-
 Example: ::
 
   < GET /appliances/123
-  < Accept: $CT:appliance-description
 
   > 200 Ok
-  > Content-Type: $CT:appliance-description
   >
-  > ...
+  > {
+  >   name: "My New Appliance"
+  >   icon: "/theme/logo/thumbnail/02d3230a1e4c9773cc12fau74982a16d2"
+  >   arch: "x86_64"
+  >   ...
+  > }
 
