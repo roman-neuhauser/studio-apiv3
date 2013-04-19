@@ -1,0 +1,161 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+=======================================
+/appliances/:app/:version/configuration
+=======================================
+
+.. contents::
+
+
+Media Types
+***********
+
+See `Media Types`_.
+
+.. _`Media Types`: ../../media-types.rest
+
+
+Methods
+*******
+
+GET
++++
+
+Describe configuration of an appliance in `:version`.
+
+Spec: ::
+
+  Accept:
+    $CT:appliance-config
+
+  Content-Type:
+    &Accept
+
+Example: ::
+
+  < GET /appliances/123/4.5.6/configuration
+  < Accept: $CT:appliance-config
+
+  > 200 Ok
+  > Content-Type: $CT:appliance-config
+  >
+  > {
+  >   "uri": "/appliances/123/4.5.6"
+  > , "name": "MTA in a Box"
+  > , "icon": "/theme/logo/thumbnail/02d3230a1e4c9773cc12fau74982a16d2"
+  > , "arch": "x86_64"
+  > , "tags": ["openSUSE", "Postfix"]
+  > , "locale": {
+  >     "keyboard-layout": "english-us"
+  >   , "language": "POSIX"
+  >   , "timezone": { "location": "UTC" }
+  >   }
+  > , "network": { "type": "dhcp" }
+  > , "firewall": {
+  >     "enabled": true
+  >   , open-"ports": [22, 80, 443]
+  >   }
+  > , "based-on": {
+  >     "name": "openSUSE 12.3 Server"
+  >   , "uri": "/base-systems/openSUSE-12.3/Server"
+  >   }
+  > , "owner": {
+  >     "name": "Roman Neuhauser"
+  >   , "icon": "/a/rJTyNg"
+  >   , "uri": "http://..."
+  >   }
+  > , "users": [
+  >     {
+  >       "id": 0
+  >     , "login": "root"
+  >     , "password": "top secret!"
+  >     , "shell": "/bin/sh"
+  >     , "homedir": "/root"
+  >     }
+  >   , {
+  >       "id": 1000
+  >     , "login": "mtadmin"
+  >     , "password": "top secret!"
+  >     , "shell": "/bin/sh"
+  >     , "homedir": "/home/mtadmin"
+  >     }
+  >   ]
+  > , "eulas": []
+  > , "databases": {
+  >     "pgsql": {
+  >       "users": [
+  >         {
+  >           "login": 'postfixdb'
+  >         , "password": 'let.me.in'
+  >         , "databases": ['postfixdb']
+  >         }
+  >       ]
+  >     }
+  >   }
+  > , "autostarts": [
+  >     {
+  >       "command": "dashboard"
+  >     , "description": "Presents overview of the appliance status."
+  >     , "enabled": true
+  >     , "user": "mtadmin"
+  >     }
+  >   ]
+  > , "settings": [
+  >     "memory_size": 2048
+  >   , "disk_size": 512000
+  >   , "swap_size": 4096
+  >   , "PAE": false
+  >   , "Xen_DOM0": false
+  >   , "cdrom_enabled": false
+  >   , "webyast_enabled": false
+  >   , "public_clonable": true
+  >   , "runlevel": 3
+  >   , "autologin": ""
+  >   ]
+  > , "LVM": {
+  >     "enabled": true
+  >   , "group": "mail"
+  >   , "comprising": {
+  >       "/var/mail": 5242880
+  >     }
+  >   }
+  > , "scripts": {
+  >     "autoyast": {
+  >       "enabled": false
+  >     , "script": ""
+  >     }
+  >   , "boot": {
+  >       "enabled": true
+  >     , "script": "#!/bin/sh\necho welcome\nexit 0\n"
+  >     }
+  >   , "build": {
+  >       "enabled": false
+  >     , "script": ""
+  >     }
+  >   }
+  > , "software": {
+  >     "packages": {
+  >       "rxvt-unicode": {
+  >         "version": "9.16",
+  >       , "from": "/repositories/openSUSE-12.3-utilities"
+  >       }
+  >     }
+  >   , "patterns": {
+  >       "base": {
+  >         "from": "/repositories/openSUSE-12.3-oss"
+  >       }
+  >     , "mail_server": {
+  >         "from": "/repositories/openSUSE-12.3-oss"
+  >       }
+  >     }
+  >   , "repositories": [
+  >       {
+  >         uri: "/repositories/openSUSE-12.3-utilites"
+  >       , name: "openSUSE-12.3-utilities"
+  >       , trusted: yes
+  >       }
+  >     ]
+  >   }
+  > }
+
