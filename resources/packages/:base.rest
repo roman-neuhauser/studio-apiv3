@@ -14,6 +14,8 @@ Methods
 GET
 +++
 
+List packages for a given base system.
+
 Example: ::
 
   < GET /packages/12.3
@@ -33,6 +35,8 @@ Example: ::
 
 POST
 ++++
+
+Upload a new package.
 
 Example: ::
 
