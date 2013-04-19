@@ -79,3 +79,17 @@ Example: ::
   >
   > ... see GET /appliances/:app
 
+  < POST /appliances
+  <
+  < {
+  <   based_on: "12.3"
+  < , arch: "x86_64"
+  < , name: "Imported Appliance"
+  < , config: "<?xml ..."
+  < }
+
+  > 201 Created
+  > Content-Location: /appliances/123
+  >
+  > ... see GET /appliances/:app
+
