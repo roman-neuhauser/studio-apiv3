@@ -1,0 +1,44 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+===================
+/admin/base-systems
+===================
+
+.. contents::
+
+
+Methods
+*******
+
+GET
++++
+
+List base systems.
+
+Example: ::
+
+  < GET /admin/base-systems
+
+  > 200 Ok
+  >
+  > [
+  >   {
+  >     basesystem: "SLES10_SP4"
+  >   , enabled: false
+  >   }
+  > , {
+  >     basesystem: "SLED11_SP1"
+  >   , enabled: true
+  >   }
+  > , {
+  >     basesystem: "SLES11_SP1"
+  >   , enabled: true
+  >   }
+  > , {
+  >     basesystem: "12.2"
+  >   , enabled: true
+  >   }
+  >   # ...
+  > ]
+

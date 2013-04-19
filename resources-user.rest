@@ -19,7 +19,6 @@ User-oriented resources
 * `/appliances/:app/repositories`_
 * `/appliances/:app/repositories/:name`_
 * `/appliances/:app/status`_
-* `/base-systems`_
 * `/builds/queued`_
 * `/builds/running`_
 * `/gallery`_
@@ -34,6 +33,7 @@ User-oriented resources
 * `/repositories/:name/refresh`_
 * `/software/:app/banned`_
 * `/software/:app/selected`_
+* `/templates`_
 * `/testdrives`_
 * `/testdrives/:token`_
 
@@ -63,7 +63,6 @@ User-oriented resources
     resources/appliances/:app/repositories/:name.rest
 .. _`/appliances/:app/status`:
     resources/appliances/:app/status.rest
-.. _`/base-systems`:            resources/base-systems.rest
 .. _`/builds/queued`:           resources/builds/queued.rest
 .. _`/builds/running`:          resources/builds/running.rest
 .. _`/gallery`:                 resources/gallery.rest
@@ -79,6 +78,7 @@ User-oriented resources
     resources/repositories/:name/refresh.rest
 .. _`/software/:app/banned`:    resources/software/:app/banned.rest
 .. _`/software/:app/selected`:  resources/software/:app/selected.rest
+.. _`/templates`:               resources/templates.rest
 .. _`/testdrives`:              resources/testdrives.rest
 .. _`/testdrives/:token`:       resources/testdrives/:token.rest
 

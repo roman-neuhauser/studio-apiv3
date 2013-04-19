@@ -50,7 +50,7 @@ Example: ::
   >   }
   > , "based-on": {
   >     "name": "openSUSE 12.3 Server"
-  >   , "uri": "/base-systems/openSUSE-12.3/Server"
+  >   , "uri": "/templates/openSUSE-12.3/Server"
   >   }
   > , "owner": {
   >     "name": "Roman Neuhauser"

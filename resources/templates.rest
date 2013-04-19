@@ -1,0 +1,50 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+==========
+/templates
+==========
+
+.. contents::
+
+
+Methods
+*******
+
+
+GET
++++
+
+List base systems.
+
+Example: ::
+
+  < GET /templates
+
+  > 200 Ok
+  >
+  > [
+  >   {
+  >     uri: "/appliances/4"
+  >   , basesystem: "SLED11_SP1"
+  >   , variant: "kde4"
+  >   , description: "SLED 11 SP1, with KDE 4"
+  >   , name: "SLED 11 SP1, KDE 4 desktop"
+  >   }
+  > , {
+  >     uri: "/appliances/5"
+  >   , basesystem: "SLED11_SP1"
+  >   , variant: "gnome"
+  >   , description: "SLED 11 SP1, with GNOME"
+  >   , name: "SLED 11 SP1, GNOME desktop"
+  >   }
+  > , {
+  >     uri: "/appliances/21"
+  >   , basesystem: "12.2"
+  >   , variant: "gnome"
+  >   , description: "Base system + GNOME"
+  >   , name: "openSUSE 12.2, GNOME desktop"
+  >   }
+  >   # ...
+  > ]
+

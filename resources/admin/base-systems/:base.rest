@@ -1,0 +1,44 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+=========================
+/admin/base-systems/:base
+=========================
+
+.. contents::
+
+
+Methods
+*******
+
+GET
++++
+
+Example: ::
+
+  < GET /admin/base-systems/12.2
+
+  > 200 Ok
+  >
+  > {
+  >   uri: "/admin/base-systems/12.2"
+  > , enabled: false
+  > }
+
+
+POST
+++++
+
+Example: ::
+
+  < POST /admin/base-systems/12.2
+  <
+  < { "enabled": true }
+
+  > 200 Ok
+  >
+  > {
+  >   uri: "/admin/base-systems/12.2"
+  > , enabled: true
+  > }
+

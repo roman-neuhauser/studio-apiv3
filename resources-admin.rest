@@ -5,6 +5,8 @@
 Admin-oriented resources
 ========================
 
+* `/admin/base-systems`_
+* `/admin/base-systems/:base`_
 * `/amazons/queued`_
 * `/amazons/running`_
 * `/azures/queued`_
@@ -21,6 +23,9 @@ Admin-oriented resources
 
 [Top_]
 
+.. _`/admin/base-systems`:      resources/admin/base-systems.rest
+.. _`/admin/base-systems/:base`:
+    resources/admin/base-systems/:base.rest
 .. _`/amazons/queued`:          resources/amazons/queued.rest
 .. _`/amazons/running`:         resources/amazons/running.rest
 .. _`/azures/queued`:           resources/azures/queued.rest
