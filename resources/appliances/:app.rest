@@ -42,9 +42,29 @@ Example: ::
   > 200 Ok
   >
   > {
-  >   name: "My New Appliance"
-  >   icon: "/theme/logo/thumbnail/02d3230a1e4c9773cc12fau74982a16d2"
-  >   arch: "x86_64"
-  >   ...
+  >   name: "miniSUSE"
+  > , version: "12.1.0"
+  > , icon: "/theme/logo/thumbnail/02d3230a1e4c9773cc12fau74982a16d2"
+  > , arch: "x86_64"
+  > , based_on: "12.1"
+  > , formats: {
+  >     "iso": "8acdc62543392e36581ac01c61514bc2"
+  >   , "oemiso": "d4ab26eb05e51df285a7001bd729c2d3"
+  >   }
+  > , username: "hgj"
+  > , security: {
+  >     untrusted_repositories: [
+  >       "network-openSUSE_12.1"
+  >     , "hgj openSUSE 12.1"
+  >     ]
+  >   , custom_packages: [
+  >       "aircrack-ng"
+  >     , "chntpw"
+  >     ]
+  >   , overlay_files: {
+  >       executable: false
+  >     , present: true
+  >     }
+  >   }
   > }
 
