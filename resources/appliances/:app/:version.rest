@@ -28,51 +28,44 @@ This removes all images of the given appliance version.
 
 Spec: ::
 
-  Accept:
-    $CT:result
-  Prefer:
-    return=minimal
-
   Status:
-    200 Ok
-  | 204 No Content
+    204 No Content
   | 409 Conflict
   | 412 Precondition Failed
-  Content-Type:
-    &Accept
 
 Example: ::
 
   < DELETE /appliance/123
-  < Accept: $CT:result
-
-  > 200 Ok
-  > Content-Type: $CT:result
-  >
-  > ...
-
-Example: ::
-
-  < DELETE /appliance/123
-  < Prefer: return=minimal
 
   > 204 No Content
 
+Example: ::
+
+  < DELETE /appliance/123
+
+  > 409 Conflict
+  >
+  > {
+  >   error: {
+  >     code: "appliance_is_published"
+  >   }
+  > }
 
 GET
 +++
 
 Describe given version of an appliance.
 
-Spec: ::
+Example: ::
 
-  Accept:
-    $CT:appliance-config
-  | $CT:appliance-status
+  < GET /appliances/123/4.5.6
 
-  Status:
-    200 Ok
-  | 412 Precondition Failed
-  Content-Type:
-    &Accept
+  > 200 Ok
+  >
+  > {
+  >   name: "My New Appliance"
+  >   icon: "/theme/logo/thumbnail/02d3230a1e4c9773cc12fau74982a16d2"
+  >   arch: "x86_64"
+  >   ...
+  > }
 
