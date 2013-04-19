@@ -1,0 +1,62 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+====================
+/gallery/:app/rating
+====================
+
+.. contents::
+
+
+Media Types
+***********
+
+See `Media Types`_.
+
+.. _`Media Types`: ../../media-types.rest
+
+
+Methods
+*******
+
+
+GET
++++
+
+Retrieve rating of a published appliance.
+
+Example: ::
+
+  < GET /gallery/123/rating
+
+  > 200 Ok
+  >
+  > {
+  >   uri: "/gallery/123"
+  > , ratings: "5"
+  > , average: "5.0"
+  > }
+
+
+POST
+++++
+
+Rate a published appliance.
+
+Example: ::
+
+  < POST /gallery/123/rating
+  <
+  < {
+  <   rating: "3.5"
+  < }
+
+  > 200 Ok
+  > Content-Location: /gallery/123/rating
+  >
+  > {
+  >   uri: "/gallery/123"
+  > , ratings: "6"
+  > , average: "4.75"
+  > }
+
