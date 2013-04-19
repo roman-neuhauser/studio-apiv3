@@ -1,9 +1,9 @@
 .. vim: ft=rst sts=2 sw=2 tw=70
 .. default-role:: literal
 
-=====
-/cron
-=====
+===========
+/admin/cron
+===========
 
 .. contents::
 
@@ -18,19 +18,19 @@ List cron jobs.
 
 Example: ::
 
-  < GET /cron
+  < GET /admin/cron
 
   > 200 Ok
   >
   > [
   >   {
-  >     uri: "/cron/process_queues"
+  >     uri: "/admin/cron/process_queues"
   >   , frequency: 1
   >   , since: "2008-08-04T11:51:00Z"
   >   , enabled: true
   >   }
   > , {
-  >     uri: "/cron/cleanup_shared_tmp"
+  >     uri: "/admin/cron/cleanup_shared_tmp"
   >   , frequency: 86400
   >   , since: "2013-05-01T03:15:00Z"
   >   , enabled: true
@@ -45,7 +45,7 @@ Process cron jobs.
 
 Example: ::
 
-  < POST /cron
+  < POST /admin/cron
   < Content-Type: $CT:cron-poke
   <
   < ...

@@ -1,9 +1,9 @@
 .. vim: ft=rst sts=2 sw=2 tw=70
 .. default-role:: literal
 
-==================
-/runners/:hostname
-==================
+========================
+/admin/runners/:hostname
+========================
 
 .. contents::
 
@@ -18,12 +18,12 @@ Drop a runner.
 
 Example: ::
 
-  < DELETE /runners/b.runners.susestudio.com
+  < DELETE /admin/runners/b.runners.susestudio.com
   < Accept: $CT:runners
 
   > 204 Ok
   > Content-Type: $CT:runners
-  > Content-Location: /runners
+  > Content-Location: /admin/runners
   >
   > {
   >   "a.runners.susestudio.com": { ... }
@@ -37,7 +37,7 @@ Retrieve information about a runner.
 
 Example: ::
 
-  < GET /runners/a.runners.susestudio.com
+  < GET /admin/runners/a.runners.susestudio.com
   < Accept: $CT:runner
 
   > 200 Ok
@@ -70,7 +70,7 @@ PATCH
 
 Example: ::
 
-  < PATCH /runners/a.runners.susestudio.com
+  < PATCH /admin/runners/a.runners.susestudio.com
   < Accept: $CT:runner
   < Content-Type: $CT:runner-change
   <
@@ -102,7 +102,7 @@ Create or update a runner.
 
 Example: ::
 
-  < PUT /runners/c.runners.susestudio.com
+  < PUT /admin/runners/c.runners.susestudio.com
   < Accept: $CT:runner
   < Content-Type: $CT:runner
   <

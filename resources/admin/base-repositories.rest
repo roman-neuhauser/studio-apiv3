@@ -1,9 +1,9 @@
 .. vim: ft=rst sts=2 sw=2 tw=70
 .. default-role:: literal
 
-==================
-/base-repositories
-==================
+========================
+/admin/base-repositories
+========================
 
 .. contents::
 

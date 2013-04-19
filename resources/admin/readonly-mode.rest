@@ -1,9 +1,9 @@
 .. vim: ft=rst sts=2 sw=2 tw=70
 .. default-role:: literal
 
-==============
-/readonly-mode
-==============
+====================
+/admin/readonly-mode
+====================
 
 .. contents::
 
@@ -16,7 +16,7 @@ GET
 
 Example: ::
 
-  < GET /readonly-mode
+  < GET /admin/readonly-mode
   < Accept: $CT:readonly-mode
 
   > 200 Ok
@@ -32,7 +32,7 @@ PUT
 
 Example: ::
 
-  < PUT /readonly-mode
+  < PUT /admin/readonly-mode
   < Content-Type: $CT:readonly-mode
   < Prefer: return=minimal
   <

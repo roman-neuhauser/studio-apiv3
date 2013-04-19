@@ -1,9 +1,9 @@
 .. vim: ft=rst sts=2 sw=2 tw=70
 .. default-role:: literal
 
-========
-/runners
-========
+==============
+/admin/runners
+==============
 
 .. contents::
 
@@ -18,7 +18,7 @@ List runners.
 
 Example: ::
 
-  < GET /runners
+  < GET /admin/runners
   < Accept: $CT:runners
 
   > 200 Ok
@@ -60,7 +60,7 @@ PATCH
 
 Example: ::
 
-  < PATCH /runners/a.runners.susestudio.com
+  < PATCH /admin/runners/a.runners.susestudio.com
   < Accept: $CT:runner
   < Content-Type: $CT:runners-change
   <

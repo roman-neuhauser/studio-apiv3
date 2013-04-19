@@ -5,39 +5,37 @@
 Admin-oriented resources
 ========================
 
+* `/admin/base-repositories`_
 * `/admin/base-systems`_
 * `/admin/base-systems/:base`_
+* `/admin/cron/:job`_
+* `/admin/cron`_
+* `/admin/readonly-mode`_
+* `/admin/runners/:hostname`_
+* `/admin/runners`_
 * `/amazons/queued`_
 * `/amazons/running`_
 * `/azures/queued`_
 * `/azures/running`_
-* `/base-repositories`_
-* `/base-systems`_
 * `/builds/queued`_
 * `/builds/running`_
-* `/cron/:job`_
-* `/cron`_
-* `/readonly-mode`_
-* `/runners/:hostname`_
-* `/runners`_
 
 [Top_]
 
+.. _`/admin/base-repositories`: resources/base-repositories.rest
 .. _`/admin/base-systems`:      resources/admin/base-systems.rest
 .. _`/admin/base-systems/:base`:
     resources/admin/base-systems/:base.rest
+.. _`/admin/cron/:job`:         resources/cron/:job.rest
+.. _`/admin/cron`:              resources/cron.rest
+.. _`/admin/readonly-mode`:     resources/readonly-mode.rest
+.. _`/admin/runners/:hostname`: resources/runners/:hostname.rest
+.. _`/admin/runners`:           resources/runners.rest
 .. _`/amazons/queued`:          resources/amazons/queued.rest
 .. _`/amazons/running`:         resources/amazons/running.rest
 .. _`/azures/queued`:           resources/azures/queued.rest
 .. _`/azures/running`:          resources/azures/running.rest
-.. _`/base-repositories`:       resources/base-repositories.rest
-.. _`/base-systems`:            resources/base-systems.rest
 .. _`/builds/queued`:           resources/builds/queued.rest
 .. _`/builds/running`:          resources/builds/running.rest
-.. _`/cron/:job`:               resources/cron/:job.rest
-.. _`/cron`:                    resources/cron.rest
-.. _`/readonly-mode`:           resources/readonly-mode.rest
-.. _`/runners/:hostname`:       resources/runners/:hostname.rest
-.. _`/runners`:                 resources/runners.rest
 
 .. _Top: README.rest
