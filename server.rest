@@ -21,9 +21,16 @@ Roar_
   Additional features include client HTTP support, coercion,
   client-side caching, awesome hypermedia support and more.
 
+Addressable_
 
-.. _Grape: http://rdoc.info/github/intridea/grape/master
-.. _Roar:  http://rdoc.info/github/apotonick/roar/master
+  is a replacement for the URI implementation that is part of Ruby's
+  standard library. It more closely conforms to RFC 3986, RFC 3987,
+  and RFC 6570 (level 4), additionally providing support for IRIs and
+  URI templates.
+
+.. _Grape:        http://rdoc.info/github/intridea/grape/master
+.. _Roar:         http://rdoc.info/github/apotonick/roar/master
+.. _Addressable:  http://rdoc.info/github/sporkmonger/addressable/master
 
 [Top_]
 
