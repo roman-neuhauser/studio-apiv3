@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.9: http://docutils.sourceforge.net/" />
+<title>/appliances/:app/files/data/:path</title>
+<link rel="stylesheet" href="../../../../../style.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="appliances-app-files-data-path">
+<h1 class="title">/appliances/:app/files/data/:path</h1>
+
+<!-- vim: ft=rst sts=2 sw=2 tw=70 -->
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#methods" id="id1">Methods</a><ul>
+<li><a class="reference internal" href="#delete" id="id2">DELETE</a></li>
+<li><a class="reference internal" href="#get" id="id3">GET</a></li>
+<li><a class="reference internal" href="#put" id="id4">PUT</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="methods">
+<h1><a class="toc-backref" href="#id1">Methods</a></h1>
+<div class="section" id="delete">
+<h2><a class="toc-backref" href="#id2">DELETE</a></h2>
+<p>Drop <tt class="docutils literal">:path</tt> from image.</p>
+<p>Spec:</p>
+<pre class="literal-block">
+Accept:
+  $CT:result
+
+Status:
+  200 Ok
+Content-Type:
+  &amp;Accept
+</pre>
+</div>
+<div class="section" id="get">
+<h2><a class="toc-backref" href="#id3">GET</a></h2>
+<p>Fetch <tt class="docutils literal">:path</tt> contents.</p>
+<p>Spec:</p>
+<pre class="literal-block">
+Accept:
+  application/octet-stream
+
+Status:
+  200 Ok
+Content-Type:
+  &amp;Accept
+</pre>
+<p>Example:</p>
+<pre class="literal-block">
+&lt; GET /appliances/123/files/data/etc/shells
+&lt; Accept: application/octet-stream
+
+&gt; 200 Ok
+&gt; Content-Type: application/octet-stream
+&gt; Content-Length: 17
+&gt;
+&gt; /bin/sh
+&gt; /bin/zsh
+</pre>
+</div>
+<div class="section" id="put">
+<h2><a class="toc-backref" href="#id4">PUT</a></h2>
+<p>Set <tt class="docutils literal">:path</tt> contents.</p>
+<p>Spec:</p>
+<pre class="literal-block">
+Accept:
+  application/octet-stream
+Content-Type:
+  application/octet-stream
+
+Status:
+  200 Ok
+| 204 No Content
+Content-Type:
+  &amp;Accept
+</pre>
+<p>Example:</p>
+<pre class="literal-block">
+&lt; GET /appliances/123/files/data/etc/shells
+&lt; Accept: application/octet-stream
+&lt; Content-Length: 18
+&lt;
+&lt; /bin/sh
+&lt; /bin/bash
+
+&gt; 200 Ok
+&gt; Content-Type: application/octet-stream
+&gt; Content-Length: 18
+&gt;
+&gt; /bin/sh
+&gt; /bin/bash
+</pre>
+</div>
+</div>
+</div>
+</body>
+</html>

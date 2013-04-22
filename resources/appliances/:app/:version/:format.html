@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.9: http://docutils.sourceforge.net/" />
+<title>/appliances/:app/:version/:format</title>
+<link rel="stylesheet" href="../../../../style.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="appliances-app-version-format">
+<h1 class="title">/appliances/:app/:version/:format</h1>
+
+<!-- vim: ft=rst sts=2 sw=2 tw=70 -->
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#methods" id="id1">Methods</a><ul>
+<li><a class="reference internal" href="#delete" id="id2">DELETE</a></li>
+<li><a class="reference internal" href="#get" id="id3">GET</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="methods">
+<h1><a class="toc-backref" href="#id1">Methods</a></h1>
+<div class="section" id="delete">
+<h2><a class="toc-backref" href="#id2">DELETE</a></h2>
+<p>Delete the built <tt class="docutils literal">:format</tt> image of the <tt class="docutils literal">:version</tt> of <tt class="docutils literal">:app</tt>.</p>
+<p>Spec:</p>
+<pre class="literal-block">
+Accept:
+  $CT:result
+
+Status:
+  200 Ok
+| 409 Conflict
+| 412 Precondition Failed
+Content-Type:
+  &amp;Accept
+</pre>
+<p>Example:</p>
+<pre class="literal-block">
+&lt; DELETE /appliances/123/4.5.6/vmx
+
+&gt; 204 No Content
+</pre>
+</div>
+<div class="section" id="get">
+<h2><a class="toc-backref" href="#id3">GET</a></h2>
+<p>Fetch the built <tt class="docutils literal">:format</tt> image of the <tt class="docutils literal">:version</tt> of <tt class="docutils literal">:app</tt>.</p>
+<p>Spec:</p>
+<pre class="literal-block">
+Accept:
+  application/x-bzip-compressed-tar     ; tar.bz tar.bz2 tbz tbz2
+| application/x-compressed-tar          ; tar.gz tar.Z tgz taz
+| application/zip                       ; zip
+
+Status:
+  200 Ok
+| 406 Not Acceptable
+Content-Type:
+  &amp;Accept
+Content-Disposition:
+  FILENAME
+</pre>
+<p>Example:</p>
+<pre class="literal-block">
+&lt; GET /appliances/123/4.5.6/oem
+&lt; Accept: application/x-compressed-tar
+
+&gt; 200 Ok
+&gt; Content-Type: application/x-compressed-tar
+&gt; Content-Disposition: attachment; filename=Whatever.x86_64-4.5.6.oem.tar.gz
+&gt; Content-Length: ...
+&gt;
+&gt; ...
+</pre>
+<p>Example:</p>
+<pre class="literal-block">
+&lt; GET /appliances/123/4.5.6/vhd
+&lt; Accept: application/zip
+
+&gt; 200 Ok
+&gt; Content-Type: application/zip
+&gt; Content-Length: ...
+&gt;
+&gt; ...
+</pre>
+</div>
+</div>
+</div>
+</body>
+</html>

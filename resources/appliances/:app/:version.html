@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.9: http://docutils.sourceforge.net/" />
+<title>/appliances/:app/:version</title>
+<link rel="stylesheet" href="../../../style.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="appliances-app-version">
+<h1 class="title">/appliances/:app/:version</h1>
+
+<!-- vim: ft=rst sts=2 sw=2 tw=70 -->
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#methods" id="id1">Methods</a><ul>
+<li><a class="reference internal" href="#delete" id="id2">DELETE</a></li>
+<li><a class="reference internal" href="#get" id="id3">GET</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="methods">
+<h1><a class="toc-backref" href="#id1">Methods</a></h1>
+<div class="section" id="delete">
+<h2><a class="toc-backref" href="#id2">DELETE</a></h2>
+<p>Delete an appliance version.</p>
+<p>This removes all images of the given appliance version.</p>
+<p>Spec:</p>
+<pre class="literal-block">
+Status:
+  204 No Content
+| 409 Conflict
+| 412 Precondition Failed
+</pre>
+<p>Example:</p>
+<pre class="literal-block">
+&lt; DELETE /appliance/123
+
+&gt; 204 No Content
+</pre>
+<p>Example:</p>
+<pre class="literal-block">
+&lt; DELETE /appliance/123
+
+&gt; 409 Conflict
+&gt;
+&gt; {
+&gt;   error: {
+&gt;     code: &quot;appliance_is_published&quot;
+&gt;   }
+&gt; }
+</pre>
+</div>
+<div class="section" id="get">
+<h2><a class="toc-backref" href="#id3">GET</a></h2>
+<p>Describe given version of an appliance.</p>
+<p>Example:</p>
+<pre class="literal-block">
+&lt; GET /appliances/123/4.5.6
+
+&gt; 200 Ok
+&gt;
+&gt; {
+&gt;   name: &quot;My New Appliance&quot;
+&gt;   icon: &quot;/theme/logo/thumbnail/02d3230a1e4c9773cc12fau74982a16d2&quot;
+&gt;   arch: &quot;x86_64&quot;
+&gt;   ...
+&gt; }
+</pre>
+</div>
+</div>
+</div>
+</body>
+</html>

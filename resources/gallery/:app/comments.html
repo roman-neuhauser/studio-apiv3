@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.9: http://docutils.sourceforge.net/" />
+<title>/gallery/:app/comments</title>
+<link rel="stylesheet" href="../../../style.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="gallery-app-comments">
+<h1 class="title">/gallery/:app/comments</h1>
+
+<!-- vim: ft=rst sts=2 sw=2 tw=70 -->
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#methods" id="id1">Methods</a><ul>
+<li><a class="reference internal" href="#get" id="id2">GET</a></li>
+<li><a class="reference internal" href="#post" id="id3">POST</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="methods">
+<h1><a class="toc-backref" href="#id1">Methods</a></h1>
+<div class="section" id="get">
+<h2><a class="toc-backref" href="#id2">GET</a></h2>
+<p>Retrieve comments for a published appliance.</p>
+<p>Example:</p>
+<pre class="literal-block">
+&lt; GET /gallery/123/comments
+
+&gt; 200 Ok
+&gt;
+&gt; {
+&gt;   appliance: &quot;/gallery/123&quot;
+&gt; , comments: [
+&gt;     {
+&gt;       id: &quot;3&quot;
+&gt;     , timestamp: &quot;2010-10-11 14:01:24 UTC&quot;
+&gt;     , username: &quot;Matt Barringer&quot;
+&gt;     , text: &quot;This is a comment posted via the API&quot;
+&gt;     }
+&gt;   , {
+&gt;       id: &quot;4&quot;
+&gt;     , parent_id: &quot;3&quot;
+&gt;     , timestamp: &quot;2010-10-11 14:02:05 UTC&quot;
+&gt;     , username: &quot;Matt Barringer&quot;
+&gt;     , text: &quot;This is a reply to a comment posted via the API&quot;
+&gt;     }
+&gt;   ]
+&gt; }
+</pre>
+</div>
+<div class="section" id="post">
+<h2><a class="toc-backref" href="#id3">POST</a></h2>
+<p>Rate a published appliance.</p>
+<p>Example:</p>
+<pre class="literal-block">
+&lt; POST /gallery/123/comments
+&lt;
+&lt; {
+&lt;   parent_id: &quot;4&quot;
+&gt; , text: &quot;Please do not spam the comments.&quot;
+&lt; }
+
+&gt; 200 Ok
+&gt; Content-Location: /gallery/123/comments
+&gt;
+&gt; {
+&gt;   appliance: &quot;/gallery/123&quot;
+&gt; , comments: [
+&gt;     {
+&gt;       id: &quot;3&quot;
+&gt;     , timestamp: &quot;2010-10-11 14:01:24 UTC&quot;
+&gt;     , username: &quot;Matt Barringer&quot;
+&gt;     , text: &quot;This is a comment posted via the API&quot;
+&gt;     }
+&gt;   , {
+&gt;       id: &quot;4&quot;
+&gt;     , parent_id: &quot;3&quot;
+&gt;     , timestamp: &quot;2010-10-11 14:02:05 UTC&quot;
+&gt;     , username: &quot;Matt Barringer&quot;
+&gt;     , text: &quot;This is a reply to a comment posted via the API&quot;
+&gt;     }
+&gt;   ]
+&gt;   , {
+&gt;       id: &quot;7&quot;
+&gt;     , parent_id: &quot;4&quot;
+&gt;     , timestamp: &quot;2010-10-11 18:15:53 UTC&quot;
+&gt;     , username: &quot;Joe Random&quot;
+&gt;     , text: &quot;Please do not spam the comments.&quot;
+&gt;     }
+&gt;   ]
+&gt; }
+</pre>
+</div>
+</div>
+</div>
+</body>
+</html>

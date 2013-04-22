@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.9: http://docutils.sourceforge.net/" />
+<title>/admin/runners</title>
+<link rel="stylesheet" href="../../style.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="admin-runners">
+<h1 class="title">/admin/runners</h1>
+
+<!-- vim: ft=rst sts=2 sw=2 tw=70 -->
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#methods" id="id1">Methods</a><ul>
+<li><a class="reference internal" href="#get" id="id2">GET</a></li>
+<li><a class="reference internal" href="#patch" id="id3">PATCH</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="methods">
+<h1><a class="toc-backref" href="#id1">Methods</a></h1>
+<div class="section" id="get">
+<h2><a class="toc-backref" href="#id2">GET</a></h2>
+<p>List runners.</p>
+<p>Example:</p>
+<pre class="literal-block">
+&lt; GET /admin/runners
+&lt; Accept: $CT:runners
+
+&gt; 200 Ok
+&gt; Content-Type: $CT:runners
+&gt;
+&gt; {
+&gt;   &quot;a.runners.susestudio.com&quot;: {
+&gt;     &quot;host&quot;: &quot;a.runners.susestudio.com&quot;
+&gt;   , &quot;port&quot;: 3005
+&gt;   , &quot;state&quot;: &quot;active&quot;
+&gt;   , &quot;preferred&quot;: true
+&gt;   , &quot;avg-load&quot;: &quot;0.5&quot;
+&gt;   , &quot;arch&quot;: &quot;x86_64&quot;
+&gt;   , &quot;last-pinged&quot;: &quot;2013-04-05T11:44:59Z&quot;
+&gt;   , &quot;capacity&quot;: {
+&gt;       &quot;kiwi&quot;: 2
+&gt;     , &quot;testdrive&quot;: 2
+&gt;     , &quot;amazon&quot;: 0
+&gt;     , &quot;azure&quot;: 0
+&gt;     }
+&gt;   , &quot;running&quot;: {
+&gt;       &quot;kiwi&quot;: 1
+&gt;     , &quot;testdrive&quot;: 2
+&gt;     , &quot;amazon&quot;: 0
+&gt;     , &quot;azure&quot;: 0
+&gt;     }
+&gt;   }
+&gt; , &quot;b.runners.susestudio.com&quot;: {
+&gt;     &quot;host&quot;: &quot;b.runners.susestudio.com&quot;
+&gt;   , &quot;port&quot;: 3005
+&gt;   , &quot;state&quot;: &quot;disabled&quot;
+&gt;   , &quot;preferred&quot;: false
+&gt;     ...
+&gt;   }
+&gt; }
+</pre>
+</div>
+<div class="section" id="patch">
+<h2><a class="toc-backref" href="#id3">PATCH</a></h2>
+<p>Example:</p>
+<pre class="literal-block">
+&lt; PATCH /admin/runners/a.runners.susestudio.com
+&lt; Accept: $CT:runner
+&lt; Content-Type: $CT:runners-change
+&lt;
+&lt; [
+&lt;   { &quot;op&quot;: &quot;replace&quot;
+&lt;   , &quot;path&quot;: &quot;/a.runners.susestudio.com/state&quot;
+&lt;   , &quot;value&quot;: &quot;disabled&quot;
+&lt;   }
+&lt; , { &quot;op&quot;: &quot;replace&quot;
+&lt;   , &quot;path&quot;: &quot;/a.runners.susestudio.com/preferred&quot;
+&lt;   , &quot;value&quot;: false
+&lt;   }
+&lt; , { &quot;op&quot;: &quot;replace&quot;
+&lt;   , &quot;path&quot;: &quot;/b.runners.susestudio.com/state&quot;
+&lt;   , &quot;value&quot;: &quot;active&quot;
+&lt;   }
+&lt; , { &quot;op&quot;: &quot;replace&quot;
+&lt;   , &quot;path&quot;: &quot;/b.runners.susestudio.com/preferred&quot;
+&lt;   , &quot;value&quot;: true
+&lt;   }
+&lt; ]
+
+&gt; 200 Ok
+&gt; Content-Type: $CT:runner
+&gt;
+&gt; {
+&gt;   &quot;a.runners.susestudio.com&quot;: {
+&gt;     &quot;host&quot;: &quot;a.runners.susestudio.com&quot;
+&gt;   , &quot;port&quot;: 3005
+&gt;   , &quot;state&quot;: &quot;disabled&quot;
+&gt;   , &quot;preferred&quot;: false
+&gt;     ...
+&gt;   }
+&gt; , &quot;b.runners.susestudio.com&quot;: {
+&gt;     &quot;host&quot;: &quot;b.runners.susestudio.com&quot;
+&gt;   , &quot;port&quot;: 3005
+&gt;   , &quot;state&quot;: &quot;active&quot;
+&gt;   , &quot;preferred&quot;: true
+&gt;     ...
+&gt;   }
+&gt; }
+</pre>
+</div>
+</div>
+</div>
+</body>
+</html>

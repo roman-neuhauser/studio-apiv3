@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.9: http://docutils.sourceforge.net/" />
+<title>/admin/cron/:job</title>
+<link rel="stylesheet" href="../../../style.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="admin-cron-job">
+<h1 class="title">/admin/cron/:job</h1>
+
+<!-- vim: ft=rst sts=2 sw=2 tw=70 -->
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#methods" id="id1">Methods</a><ul>
+<li><a class="reference internal" href="#delete" id="id2">DELETE</a></li>
+<li><a class="reference internal" href="#get" id="id3">GET</a></li>
+<li><a class="reference internal" href="#post" id="id4">POST</a></li>
+<li><a class="reference internal" href="#put" id="id5">PUT</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="methods">
+<h1><a class="toc-backref" href="#id1">Methods</a></h1>
+<div class="section" id="delete">
+<h2><a class="toc-backref" href="#id2">DELETE</a></h2>
+<p>Drop a cron job.</p>
+<p>Example:</p>
+<pre class="literal-block">
+&lt; DELETE /admin/cron/process_queues
+
+&gt; 204 No Content
+</pre>
+</div>
+<div class="section" id="get">
+<h2><a class="toc-backref" href="#id3">GET</a></h2>
+<p>Show info on a cron job.</p>
+<p>Example:</p>
+<pre class="literal-block">
+&lt; GET /admin/cron/process_queues
+
+&gt; 200 Ok
+&gt;
+&gt; {
+&gt;   frequency: 1
+&gt; , since: &quot;2008-08-04T11:51:00Z&quot;
+&gt; , enabled: true
+&gt; }
+</pre>
+</div>
+<div class="section" id="post">
+<h2><a class="toc-backref" href="#id4">POST</a></h2>
+<p>Run a cron job.</p>
+<p>Example:</p>
+<pre class="literal-block">
+&lt; POST /admin/cron/process_queues
+
+&gt; 202 Accepted
+</pre>
+</div>
+<div class="section" id="put">
+<h2><a class="toc-backref" href="#id5">PUT</a></h2>
+<p>Create a cron job.</p>
+<p>Example:</p>
+<pre class="literal-block">
+&lt; PUT /admin/cron/cleanup_shared_tmp
+&lt;
+&lt; {
+&lt;   frequency: 86400
+&lt; , since: &quot;2013-05-01T03:15:00Z&quot;
+&lt; , enabled: true
+&lt; }
+
+&gt; 204 No Content
+</pre>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.9: http://docutils.sourceforge.net/" />
+<title>Overview</title>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="overview">
+<h1 class="title">Overview</h1>
+
+<!-- vim: ft=rst sts=2 sw=2 tw=70 -->
+<p>This document discusses design guidelines for SUSE Studio APIv3.</p>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#goals-and-means" id="id1">Goals and Means</a><ul>
+<li><a class="reference internal" href="#goals" id="id2">Goals</a></li>
+<li><a class="reference internal" href="#means" id="id3">Means</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#representation-media-types" id="id4">Representation media types</a></li>
+<li><a class="reference internal" href="#partial-updates" id="id5">Partial updates</a></li>
+<li><a class="reference internal" href="#expires-header" id="id6">Expires header</a></li>
+<li><a class="reference internal" href="#status-codes" id="id7">Status codes</a><ul>
+<li><a class="reference internal" href="#error-responses" id="id8">Error responses</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#natural-routes" id="id9">Natural routes</a></li>
+<li><a class="reference internal" href="#representation-descriptions" id="id10">Representation descriptions</a><ul>
+<li><a class="reference internal" href="#json-schema-v4" id="id11">JSON Schema v4</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#specifications" id="id12">Specifications</a></li>
+<li><a class="reference internal" href="#further-reading" id="id13">Further Reading</a></li>
+</ul>
+</div>
+<div class="section" id="goals-and-means">
+<h1><a class="toc-backref" href="#id1">Goals and Means</a></h1>
+<div class="section" id="goals">
+<h2><a class="toc-backref" href="#id2">Goals</a></h2>
+<blockquote>
+Extensibility, scalability, pragmatism.</blockquote>
+<p>These are forward-looking statements covering v3 and onward:</p>
+<ul class="simple">
+<li>We want the API to be durable in face of time and scale.</li>
+<li>We want to be able to evolve both the interface and implementation,
+potentially keeping compatibility with old clients.</li>
+<li>We want to afford the same to clients.</li>
+<li>We want the API to cover the whole feature set of SUSE Studio.</li>
+<li>We do not want to close the door to converging the api and web-ui
+controllers without a very good reason.</li>
+<li>We want the API to be usable with low effort on the part of the
+client software authors.</li>
+<li>Inexperienced programmers should be able to use the API.</li>
+</ul>
+<p>We <em>could</em> keep the current API (<em>I</em>nterface, not <em>I</em>mplementation)
+around indefinitely, extend it with new endpoints, and current
+endpoints with new behaviors through <tt class="docutils literal">Prefer</tt> and content negotiation,
+the opinion that this is not worth the effort seems to prevail in the
+team.</p>
+</div>
+<div class="section" id="means">
+<h2><a class="toc-backref" href="#id3">Means</a></h2>
+<blockquote>
+Generality, readability, coarseness, late binding, interfaces first.</blockquote>
+<ul class="simple">
+<li>The web-ui URLs should be meaningful to humans which means preference
+for natural identifiers.</li>
+<li>The quality of the interface should trump implementation concerns
+(up to a limit).</li>
+<li>As is the case with all remote services, each use has large overhead
+both in time and computer resources.  It's cheaper to give clients
+more information than to force them to access the API twice.</li>
+<li>Late binding, or independence of URIs and representations, enables
+&quot;content negotiation to take place based on characteristics of the
+request&quot;, and &quot;to reference the concept rather than some singular
+representation of that concept, thus removing the need to change all
+existing links whenever the representation changes&quot;.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="representation-media-types">
+<h1><a class="toc-backref" href="#id4">Representation media types</a></h1>
+<p>APIv3 will use JSON instead of XML.</p>
+<p>Transparent versioning of the API would call for custom media types
+(they cost nothing), and a form of versioning those.
+I (roman) favor this over other ways to version the API.
+For an in-depth discussion see <a class="reference internal" href="#further-reading">Further Reading</a> and <a class="reference external" href="REST.html">REST</a>.</p>
+</div>
+<div class="section" id="partial-updates">
+<h1><a class="toc-backref" href="#id5">Partial updates</a></h1>
+<p>Partial updates (eg. appliance configuration) should use <tt class="docutils literal">PATCH</tt>.
+HTTPbis:</p>
+<blockquote>
+Partial content updates are possible by targeting a separately
+identified resource with state that overlaps a portion of the larger
+resource, or by using a different method that has been specifically
+defined for partial updates (for example, the PATCH method defined
+in <a class="reference internal" href="#rfc5789">RFC5789</a>).</blockquote>
+</div>
+<div class="section" id="expires-header">
+<h1><a class="toc-backref" href="#id6">Expires header</a></h1>
+<p>The <tt class="docutils literal">Expires</tt> header should reflect real-world considerations such
+as the build expiration policy.</p>
+</div>
+<div class="section" id="status-codes">
+<h1><a class="toc-backref" href="#id7">Status codes</a></h1>
+<p>We should issue status codes in conformance with HTTP and related
+standards.  This is especially important in non-interactive software,
+where using a wide brush can deprive the client of ability to take
+the most appropriate action and force a human intervention to
+disambiguate the situation.</p>
+<p>See <a class="reference external" href="http-status.html">HTTP Status codes</a> for an in-depth discussion.</p>
+<div class="section" id="error-responses">
+<h2><a class="toc-backref" href="#id8">Error responses</a></h2>
+<p>APIv2 abuses 400 Bad Request for all kinds of error conditions.
+This status code is intended for &quot;malformed syntax&quot; situations,
+where <em>syntax</em> refers to the syntax of the HTTP request, not to
+application-level semantic problems with an otherwise correct
+HTTP request.
+A good chunk of current 400 responses should be 405 Method Not Allowed
+instead.</p>
+</div>
+</div>
+<div class="section" id="natural-routes">
+<h1><a class="toc-backref" href="#id9">Natural routes</a></h1>
+<p>Routes exposed by v3 should use natural ids as much as possible.</p>
+<p>Routes with two synthetic ids where one id implies the only possible
+value of the other necessitate extra code to detect and mitigate
+inconsistencies.
+What happens with <tt class="docutils literal">GET /appliances/3/files/12</tt> if the file with id=12
+is in fact part of appliance #6?</p>
+<p>Only unique and/or stable natural ids can be used.</p>
+<ul class="simple">
+<li>appliance names are not unique even within the scope
+of a single user -&gt; bad</li>
+<li>overlay file paths in an appliance (image) are not stable
+(can change over time) but they're unique at any moment -&gt; ok</li>
+</ul>
+</div>
+<div class="section" id="representation-descriptions">
+<h1><a class="toc-backref" href="#id10">Representation descriptions</a></h1>
+<p>We can keep relying on informal descriptions, or employ a formal
+format.  Informal descriptions tend to be incomplete and ambiguous,
+formal descriptions do not suffer from ambiguities and would enable
+testing and validation (both server- and client-side).</p>
+<p>I propose describing representations used by the API using
+JSON Schema v4, which is being prepared for submission to IETF
+&quot;in early 2013&quot;.</p>
+<p>Canonical JSON Schema documents are JSON documents.
+JSON is great as a serialization format, but all the curly braces
+and quotes make my eyes bleed.  For this reason, the proposals
+under <tt class="docutils literal">schema/</tt> employ CoffeeScript syntax.
+We can easily canonicalize these with a bit of <tt class="docutils literal">coffee(1)</tt> and
+<tt class="docutils literal">JSON.stringify</tt>.</p>
+<div class="section" id="json-schema-v4">
+<h2><a class="toc-backref" href="#id11">JSON Schema v4</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://json-schema.org/latest/json-schema-core.html">http://json-schema.org/latest/json-schema-core.html</a></li>
+<li><a class="reference external" href="http://json-schema.org/latest/json-schema-validation.html">http://json-schema.org/latest/json-schema-validation.html</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="specifications">
+<h1><a class="toc-backref" href="#id12">Specifications</a></h1>
+<dl class="docutils" id="rfc5789">
+<dt>RFC2616: Hypertext Transfer Protocol -- HTTP/1.1</dt>
+<dd><a class="reference external" href="https://tools.ietf.org/html/rfc2616">https://tools.ietf.org/html/rfc2616</a></dd>
+<dt>RFC3986: Uniform Resource Identifier (URI): Generic Syntax</dt>
+<dd><a class="reference external" href="https://tools.ietf.org/html/rfc3986">https://tools.ietf.org/html/rfc3986</a></dd>
+<dt>RFC4627: The application/json Media Type for JavaScript Object Notation (JSON)</dt>
+<dd><a class="reference external" href="https://tools.ietf.org/html/rfc4627">https://tools.ietf.org/html/rfc4627</a></dd>
+<dt>RFC5789: PATCH method for HTTP</dt>
+<dd><a class="reference external" href="https://tools.ietf.org/html/rfc5789">https://tools.ietf.org/html/rfc5789</a></dd>
+<dt>RFC5988: Web Linking</dt>
+<dd><a class="reference external" href="https://tools.ietf.org/html/rfc5988">https://tools.ietf.org/html/rfc5988</a></dd>
+<dt>RFC6265: HTTP State Management Mechanism (cookies)</dt>
+<dd><a class="reference external" href="https://tools.ietf.org/html/rfc6265">https://tools.ietf.org/html/rfc6265</a></dd>
+<dt>RFC6266: Content-Disposition Header in HTTP</dt>
+<dd><a class="reference external" href="https://tools.ietf.org/html/rfc6266">https://tools.ietf.org/html/rfc6266</a></dd>
+<dt>RFC6570: URI Template</dt>
+<dd><a class="reference external" href="https://tools.ietf.org/html/rfc6570">https://tools.ietf.org/html/rfc6570</a></dd>
+<dt>RFC6690: Constrained RESTful Environments (CoRE) Link Format</dt>
+<dd><a class="reference external" href="https://tools.ietf.org/html/rfc6690">https://tools.ietf.org/html/rfc6690</a></dd>
+<dt>RFC6901: JSON pointer</dt>
+<dd><a class="reference external" href="https://tools.ietf.org/html/rfc6901">https://tools.ietf.org/html/rfc6901</a></dd>
+<dt>RFC6902: JSON patch, application/json-patch</dt>
+<dd><a class="reference external" href="https://tools.ietf.org/html/rfc6902">https://tools.ietf.org/html/rfc6902</a></dd>
+<dt>HTTPbis</dt>
+<dd><a class="reference external" href="https://tools.ietf.org/wg/httpbis/">https://tools.ietf.org/wg/httpbis/</a></dd>
+<dt>JSON merge patch, application/json-merge-patch</dt>
+<dd><a class="reference external" href="https://tools.ietf.org/html/draft-snell-merge-patch-08">https://tools.ietf.org/html/draft-snell-merge-patch-08</a></dd>
+<dt>JSON predicate, application/json-patch-test</dt>
+<dd><a class="reference external" href="https://tools.ietf.org/html/draft-snell-json-test-05">https://tools.ietf.org/html/draft-snell-json-test-05</a></dd>
+<dt>JSON schema</dt>
+<dd><a class="reference external" href="https://tools.ietf.org/html/draft-zyp-json-schema-04">https://tools.ietf.org/html/draft-zyp-json-schema-04</a></dd>
+<dt>JSON Hypertext Application Language</dt>
+<dd><a class="reference external" href="https://tools.ietf.org/html/draft-kelly-json-hal-05">https://tools.ietf.org/html/draft-kelly-json-hal-05</a></dd>
+<dt>Link relations</dt>
+<dd><a class="reference external" href="https://datatracker.ietf.org/doc/draft-snell-additional-link-relations/">https://datatracker.ietf.org/doc/draft-snell-additional-link-relations/</a></dd>
+<dt>Representing CoRE Link Collections in JSON</dt>
+<dd><a class="reference external" href="https://tools.ietf.org/html/draft-bormann-core-links-json-02">https://tools.ietf.org/html/draft-bormann-core-links-json-02</a></dd>
+<dt>XML media types (foo/bar+xml)</dt>
+<dd><a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-appsawg-xml-mediatypes/">https://datatracker.ietf.org/doc/draft-ietf-appsawg-xml-mediatypes/</a></dd>
+<dt>On Linking Alternative Representations To Enable Discovery And Publishing</dt>
+<dd><a class="reference external" href="http://www.w3.org/2001/tag/doc/alternatives-discovery.html">http://www.w3.org/2001/tag/doc/alternatives-discovery.html</a></dd>
+<dt>Prefer header</dt>
+<dd><a class="reference external" href="http://datatracker.ietf.org/doc/draft-snell-http-prefer/">http://datatracker.ietf.org/doc/draft-snell-http-prefer/</a></dd>
+<dt>REST</dt>
+<dd><a class="reference external" href="http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm</a></dd>
+</dl>
+</div>
+<div class="section" id="further-reading">
+<h1><a class="toc-backref" href="#id13">Further Reading</a></h1>
+<ul class="simple">
+<li><a class="reference external" href="http://www.subbu.org/blog/2011/03/performance-of-restful-apps">http://www.subbu.org/blog/2011/03/performance-of-restful-apps</a></li>
+<li><a class="reference external" href="http://blog.steveklabnik.com/posts/2011-07-03-nobody-understands-rest-or-http">http://blog.steveklabnik.com/posts/2011-07-03-nobody-understands-rest-or-http</a></li>
+<li><a class="reference external" href="http://developer.github.com/">http://developer.github.com/</a></li>
+<li><a class="reference external" href="http://www.infoq.com/news/2010/03/rest-versioning-strategies">http://www.infoq.com/news/2010/03/rest-versioning-strategies</a></li>
+<li><a class="reference external" href="http://www.subbu.org/blog/2007/12/vary-header-for-restful-applications">http://www.subbu.org/blog/2007/12/vary-header-for-restful-applications</a></li>
+<li><a class="reference external" href="http://stackoverflow.com/questions/389169/best-practices-for-api-versioning">http://stackoverflow.com/questions/389169/best-practices-for-api-versioning</a></li>
+<li><a class="reference external" href="http://www.w3.org/DesignIssues/Axioms.html">http://www.w3.org/DesignIssues/Axioms.html</a></li>
+</ul>
+<p>[<a class="reference external" href="README.html">Top</a>]</p>
+</div>
+</div>
+</body>
+</html>

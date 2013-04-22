@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.9: http://docutils.sourceforge.net/" />
+<title>/software/:app/banned</title>
+<link rel="stylesheet" href="../../../style.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="software-app-banned">
+<h1 class="title">/software/:app/banned</h1>
+
+<!-- vim: ft=rst sts=2 sw=2 tw=70 -->
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#methods" id="id1">Methods</a><ul>
+<li><a class="reference internal" href="#get" id="id2">GET</a></li>
+<li><a class="reference internal" href="#patch" id="id3">PATCH</a></li>
+<li><a class="reference internal" href="#put" id="id4">PUT</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="methods">
+<h1><a class="toc-backref" href="#id1">Methods</a></h1>
+<div class="section" id="get">
+<h2><a class="toc-backref" href="#id2">GET</a></h2>
+<p>List packages banned from the appliance.</p>
+<p>Example:</p>
+<pre class="literal-block">
+&lt; GET /software/123/banned
+
+&gt; 200 Ok
+&gt;
+&gt; [
+&gt;   &quot;gnome&quot;
+&gt; , &quot;kde4&quot;
+&gt; ]
+</pre>
+</div>
+<div class="section" id="patch">
+<h2><a class="toc-backref" href="#id3">PATCH</a></h2>
+<p>Modify the list packages and patterns included in the appliance.</p>
+<p>Example:</p>
+<pre class="literal-block">
+&lt; PATCH /software/123/banned
+&lt;
+&lt; [
+&lt;   { &quot;op&quot;: &quot;add&quot;, &quot;path&quot;: &quot;/-&quot;, &quot;value&quot;: &quot;e17&quot; }
+&lt; ]
+
+&gt; 200 Ok
+&gt;
+&gt; [
+&gt;   &quot;e17&quot;
+&gt; , &quot;gnome&quot;
+&gt; , &quot;kde4&quot;
+&gt; ]
+</pre>
+</div>
+<div class="section" id="put">
+<h2><a class="toc-backref" href="#id4">PUT</a></h2>
+<p>Set packages banned from the appliance.</p>
+<p>Example:</p>
+<pre class="literal-block">
+&lt; PUT /software/123/banned
+&lt;
+&lt; [
+&lt;   &quot;gnome&quot;
+&lt; , &quot;kde4&quot;
+&lt; ]
+
+&gt; 200 Ok
+&gt;
+&gt; [
+&gt;   &quot;gnome&quot;
+&gt; , &quot;kde4&quot;
+&gt; ]
+</pre>
+</div>
+</div>
+</div>
+</body>
+</html>

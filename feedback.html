@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.9: http://docutils.sourceforge.net/" />
+<title>SUSE Studio APIv3 User Feedback</title>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="suse-studio-apiv3-user-feedback">
+<h1 class="title">SUSE Studio APIv3 User Feedback</h1>
+
+<!-- vim: ft=rst sts=2 sw=2 tw=70 -->
+<p>This document presents a summary of user feedback received from
+Studio API users regarding the expected direction the v3 would take.</p>
+<p>The text is anonymized to protect those users' privacy as this is
+public.</p>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#platforms" id="id1">Platforms</a></li>
+<li><a class="reference internal" href="#natural-identifiers" id="id2">Natural Identifiers</a></li>
+<li><a class="reference internal" href="#media-types" id="id3">Media Types</a></li>
+<li><a class="reference internal" href="#content-negotiation" id="id4">Content Negotiation</a></li>
+</ul>
+</div>
+<div class="section" id="platforms">
+<h1><a class="toc-backref" href="#id1">Platforms</a></h1>
+<p>We have at least one heavy user who based their Studio automation
+on MS Windows.
+They rely on batch (<tt class="docutils literal">cmd.exe</tt>) scripts driving <tt class="docutils literal">curl</tt>, with the
+outlook on moving towards PHP or maybe Ruby, still on Windows.</p>
+</div>
+<div class="section" id="natural-identifiers">
+<h1><a class="toc-backref" href="#id2">Natural Identifiers</a></h1>
+<p>At least one user is not happy about having to query the API to
+find out the synthetic id of an object to be able to use it;
+this was mentioned in the context of repositories and overlay files.</p>
+</div>
+<div class="section" id="media-types">
+<h1><a class="toc-backref" href="#id3">Media Types</a></h1>
+<p>There've been no objections against using <tt class="docutils literal">JSON</tt>-based media types.
+Parsing JSON seems to be as easy--or easier--as parsing POX (Plain
+Old XML) on all platforms so far.</p>
+</div>
+<div class="section" id="content-negotiation">
+<h1><a class="toc-backref" href="#id4">Content Negotiation</a></h1>
+<p>There've been no objections against embracing <tt class="docutils literal">Accept</tt>-based content
+negotiation.
+Users I talked to rely on tools based on their production technologies
+to &quot;play with&quot; the API: Java programmers use their IDE features,
+<tt class="docutils literal">curl(1)</tt> users simply use <tt class="docutils literal">curl</tt>.</p>
+<p>[<a class="reference external" href="README.html">Top</a>]</p>
+</div>
+</div>
+</body>
+</html>

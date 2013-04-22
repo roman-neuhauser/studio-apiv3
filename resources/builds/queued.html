@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.9: http://docutils.sourceforge.net/" />
+<title>/builds/queued</title>
+<link rel="stylesheet" href="../../style.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="builds-queued">
+<h1 class="title">/builds/queued</h1>
+
+<!-- vim: ft=rst sts=2 sw=2 tw=70 -->
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#methods" id="id1">Methods</a><ul>
+<li><a class="reference internal" href="#get" id="id2">GET</a></li>
+<li><a class="reference internal" href="#post" id="id3">POST</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="methods">
+<h1><a class="toc-backref" href="#id1">Methods</a></h1>
+<div class="section" id="get">
+<h2><a class="toc-backref" href="#id2">GET</a></h2>
+<p>List queued builds.</p>
+<p>Example:</p>
+<pre class="literal-block">
+&lt; GET /builds/queued
+
+&gt; 200 Ok
+&gt; Content-Type: $CT:builds-queued
+&gt;
+&gt; {
+&gt;   {
+&gt;     &quot;appliance&quot;: &quot;/appliances/123&quot;
+&gt;   , &quot;format&quot;: &quot;iso&quot;
+&gt;   , &quot;queued&quot;: &quot;2013-04-16T11:23:45Z&quot;
+&gt;   }
+&gt; , {
+&gt;     &quot;appliance&quot;: &quot;/appliances/123&quot;
+&gt;   , &quot;format&quot;: &quot;xen&quot;
+&gt;   , &quot;queued&quot;: &quot;2013-04-16T11:23:45Z&quot;
+&gt;   }
+&gt; }
+</pre>
+</div>
+<div class="section" id="post">
+<h2><a class="toc-backref" href="#id3">POST</a></h2>
+<p>Queue a build or KIWI export.</p>
+<p>Spec:</p>
+<pre class="literal-block">
+Accept:
+  $CT:builds-queued
+Content-Type:
+  $CT:build-request
+
+Status:
+  200 Ok
+Content-Type:
+  &amp;Accept
+Content-Location:
+  /builds/queued
+</pre>
+<p>Example:</p>
+<pre class="literal-block">
+&lt; POST /builds/queued
+&lt;
+&lt; {
+&lt;   &quot;appliance&quot;: &quot;/appliances/123&quot;
+&lt; , &quot;format&quot;: &quot;oem&quot;
+&lt; , &quot;type&quot;: &quot;image&quot;
+&lt; }
+
+&gt; 200 Ok
+&gt;
+&gt; {
+&gt;   {
+&gt;     &quot;appliance&quot;: &quot;/appliances/123&quot;
+&gt;   , &quot;format&quot;: &quot;iso&quot;
+&gt;   , &quot;type&quot;: &quot;image&quot;
+&gt;   , &quot;queued&quot;: &quot;2013-04-16T11:23:45Z&quot;
+&gt;   }
+&gt; , {
+&gt;     &quot;appliance&quot;: &quot;/appliances/123&quot;
+&gt;   , &quot;format&quot;: &quot;xen&quot;
+&gt;   , &quot;type&quot;: &quot;image&quot;
+&gt;   , &quot;queued&quot;: &quot;2013-04-16T11:23:45Z&quot;
+&gt;   }
+&gt; , {
+&gt;     &quot;appliance&quot;: &quot;/appliances/123&quot;
+&gt;   , &quot;format&quot;: &quot;oem&quot;
+&gt;   , &quot;type&quot;: &quot;kiwi&quot;
+&gt;   , &quot;queued&quot;: &quot;2013-04-17T09:11:23Z&quot;
+&gt;   }
+&gt; }
+
+&lt; POST /builds/queued
+&lt;
+&lt; {
+&lt;   &quot;appliance&quot;: &quot;/appliances/123&quot;
+&lt; , &quot;format&quot;: &quot;vmx&quot;
+&lt; , &quot;type&quot;: &quot;kiwi&quot;
+&lt; }
+
+&gt; 200 Ok
+&gt;
+&gt; {
+&gt;   {
+&gt;     &quot;appliance&quot;: &quot;/appliances/123&quot;
+&gt;   , &quot;format&quot;: &quot;iso&quot;
+&gt;   , &quot;type&quot;: &quot;image&quot;
+&gt;   , &quot;queued&quot;: &quot;2013-04-16T11:23:45Z&quot;
+&gt;   }
+&gt; , {
+&gt;     &quot;appliance&quot;: &quot;/appliances/123&quot;
+&gt;   , &quot;format&quot;: &quot;xen&quot;
+&gt;   , &quot;type&quot;: &quot;image&quot;
+&gt;   , &quot;queued&quot;: &quot;2013-04-16T11:23:45Z&quot;
+&gt;   }
+&gt; , {
+&gt;     &quot;appliance&quot;: &quot;/appliances/123&quot;
+&gt;   , &quot;format&quot;: &quot;oem&quot;
+&gt;   , &quot;type&quot;: &quot;kiwi&quot;
+&gt;   , &quot;queued&quot;: &quot;2013-04-17T09:11:23Z&quot;
+&gt;   }
+&gt; , {
+&gt;     &quot;appliance&quot;: &quot;/appliances/123&quot;
+&gt;   , &quot;format&quot;: &quot;vmx&quot;
+&gt;   , &quot;type&quot;: &quot;kiwi&quot;
+&gt;   }
+&gt; }
+</pre>
+</div>
+</div>
+</div>
+</body>
+</html>

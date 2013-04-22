@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.9: http://docutils.sourceforge.net/" />
+<title>Resources</title>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<body>
+<div class="document" id="resources">
+<h1 class="title">Resources</h1>
+
+<!-- vim: ft=rst sts=2 sw=2 tw=70 -->
+<p><em>Spec</em> sections display important request headers and header values,
+followed by a blank line, then important response headers and values.</p>
+<p><tt class="docutils literal"><span class="pre">Content-Type:</span> &amp;Accept</tt> is a shorthand meaning <em>the response C-T uses
+whatever representation was specified in the Accept request header</em>.</p>
+<p>All resources should permit the <tt class="docutils literal">OPTIONS</tt> HTTP method.
+Responses to these requests should list allowable methods (<tt class="docutils literal">Allow</tt>)
+and content types (<tt class="docutils literal">Accept</tt>, <tt class="docutils literal"><span class="pre">Accept-Patch</span></tt>).
+Individual resource descriptions below omit discussion of <tt class="docutils literal">OPTIONS</tt>.</p>
+<p>Requests for unknown resources result in <em>404 Not Found</em>, requests
+for deleted resources may result in <em>410 Gone</em>.</p>
+<p>Requests using unsupported methods for existing resources result in
+<em>405 Method Not Allowed</em>.</p>
+<p>Requests for existing resources using permitted methods but
+unsupported <tt class="docutils literal"><span class="pre">Content-Type</span></tt> result in <em>415 Unsupported Media Type</em>.</p>
+<p>Valid <tt class="docutils literal">DELETE</tt> and <tt class="docutils literal">PUT</tt> requests permit the <tt class="docutils literal">Prefer</tt> request header
+with the value of <tt class="docutils literal">return=minimal</tt>.
+Such requests yield <em>204 No Content</em> instead of the normal <em>200 Ok</em>.</p>
+<ul class="simple">
+<li><a class="reference external" href="resources-admin.html">Admin-oriented resources</a></li>
+<li><a class="reference external" href="resources-user.html">User-oriented resources</a></li>
+</ul>
+<p>[<a class="reference external" href="README.html">Top</a>]</p>
+</div>
+</body>
+</html>
