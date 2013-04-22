@@ -173,14 +173,26 @@ URI Template
   http://tools.ietf.org/html/rfc6570
 JSON, application/json
   http://tools.ietf.org/html/rfc4627
-application/json-patch
+JSON patch, application/json-patch
   http://tools.ietf.org/html/rfc6902
+JSON merge patch, application/json-merge-patch
+  http://tools.ietf.org/html/draft-snell-merge-patch-08
+JSON predicate, application/json-patch-test
+  http://tools.ietf.org/html/draft-snell-json-test-05
 JSON schema
   http://tools.ietf.org/html/draft-zyp-json-schema-04
+JSON Hypertext Application Language
+  http://tools.ietf.org/html/draft-kelly-json-hal-05
 JSON pointer
   http://tools.ietf.org/html/rfc6901
+Web Linking
+  http://tools.ietf.org/html/rfc5988
 Link relations
   http://datatracker.ietf.org/doc/draft-snell-additional-link-relations/
+Constrained RESTful Environments (CoRE) Link Format
+  http://tools.ietf.org/html/rfc6690
+Representing CoRE Link Collections in JSON
+  http://tools.ietf.org/html/draft-bormann-core-links-json-02
 XML media types (foo/bar+xml)
   http://datatracker.ietf.org/doc/draft-ietf-appsawg-xml-mediatypes/
 On Linking Alternative Representations To Enable Discovery And Publishing
