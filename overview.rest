@@ -205,6 +205,7 @@ Further Reading
 
 * http://www.subbu.org/blog/2011/03/performance-of-restful-apps
 * http://blog.steveklabnik.com/posts/2011-07-03-nobody-understands-rest-or-http
+* http://www.dehora.net/journal/2009/02/03/just-use-post/
 * http://developer.github.com/
 * http://www.infoq.com/news/2010/03/rest-versioning-strategies
 * http://www.subbu.org/blog/2007/12/vary-header-for-restful-applications
