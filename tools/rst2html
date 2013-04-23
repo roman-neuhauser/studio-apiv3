@@ -4,6 +4,9 @@ rest="$1"
 html="$2"
 surl="${rest##*/}"
 
+tdir="$(dirname "$html")"
+test -d "$tdir" || mkdir -p "$tdir"
+
 sed \
   -e '/^\.\. _.*\.rest$/s/\.rest$/.html/' \
   -e '/^\.\. _.*`:$/{n; s/\.rest$/.html/; }' \
