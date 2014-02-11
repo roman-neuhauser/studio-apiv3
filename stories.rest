@@ -1,0 +1,35 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+=========
+Use Cases
+=========
+
+* `Create an appliance by cloning`_
+* `Create an appliance by importing a KIWI configuration`_
+* `Modify an appliance description and configuration`_
+* `Queue image builds for an appliance`_
+* `Queue kiwi export for an appliance`_
+* `Download built images`_
+* `Download exported kiwi configuration`_
+* `Modify software selection of an appliance`_
+* `Publish an appliance in the Gallery`_
+
+.. _`Create an appliance by cloning`:
+    stories/clone.rest
+.. _`Create an appliance by importing a KIWI configuration`:
+    stories/import-kiwi-config.rest
+.. _`Modify an appliance description and configuration`:
+    stories/configure.rest
+.. _`Queue image builds for an appliance`:
+    stories/build-images.rest
+.. _`Queue kiwi export for an appliance`:
+    stories/export-kiwi-config.rest
+.. _`Download built images`:
+    stories/download-images.rest
+.. _`Download exported kiwi configuration`:
+    stories/download-kiwi-config.rest
+.. _`Modify software selection of an appliance`:
+    stories/modify-software.rest
+.. _`Publish an appliance in the Gallery`:
+    stories/publish-appliance.rest

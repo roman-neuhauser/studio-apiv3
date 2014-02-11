@@ -1,0 +1,12 @@
+.. vim: ft=rst sts=2 sw=2 tw=70
+.. default-role:: literal
+
+
+==============================
+Create an appliance by cloning
+==============================
+
+
+  < POST /appliances
+  > 201 Created
+
