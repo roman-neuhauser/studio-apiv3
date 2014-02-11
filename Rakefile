@@ -2,6 +2,7 @@
 
 require 'pathname'
 
+SRCDIR    = Dir.pwd
 OUTPUTDIR = "output"
 RESTFILES = FileList["**/*.rest"]
 HTMLFILES = RESTFILES.ext('.html').map {|f| File.join OUTPUTDIR, f}
@@ -17,16 +18,35 @@ def source_file striphead, ext
   end
 end
 
+def in_dir dir, &block
+  cwd = Dir.pwd
+  puts "cd #{dir}"
+  Dir.chdir dir, &block
+  puts "cd #{cwd}"
+end
+
 task :default => [:html]
 
-task :html => [OUTPUTDIR] + HTMLFILES
+task :html => [OUTPUTDIR] + HTMLFILES do
+  in_dir OUTPUTDIR do
+    sh 'cp', 'README.html', 'index.html'
+    sh 'git', 'add', '-A', '.'
+  end
+end
 
 task OUTPUTDIR do
-  sh 'mkdir', '-p', OUTPUTDIR
+  sh 'git', 'branch', '-tf', 'gh-pages', 'origin/gh-pages'
+  sh 'git', 'clone', '-b', 'gh-pages', '.', OUTPUTDIR
+  in_dir OUTPUTDIR do
+    Dir.glob '*' do |entry|
+      sh 'rm', '-r', entry
+    end
+  end
+  sh 'cp', 'style.css', OUTPUTDIR
 end
 
 task :clobber do
-  sh 'rm', '-r', OUTPUTDIR if File.exists? OUTPUTDIR
+  sh 'rm', '-rf', OUTPUTDIR
 end
 
 rule '.html' => source_file(OUTPUTDIR, '.rest') do |t|

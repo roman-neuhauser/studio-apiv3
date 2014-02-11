@@ -4,6 +4,10 @@ rest="$1"
 html="$2"
 surl="${rest##*/}"
 
+restr="${rest%.*}"
+htmlr="${html%.*}"
+output=${htmlr%$restr}
+
 tdir="$(dirname "$html")"
 test -d "$tdir" || mkdir -p "$tdir"
 
@@ -11,6 +15,6 @@ sed \
   -e '/^\.\. _.*\.rest$/s/\.rest$/.html/' \
   -e '/^\.\. _.*`:$/{n; s/\.rest$/.html/; }' \
   < $rest | \
-  $rst2html --stylesheet-path=style.css --link-stylesheet --strict - $html
+  echo $rst2html --stylesheet-path=${output}style.css --link-stylesheet --strict - $html
 
 # vim: ft=sh sw=2 ts=2 et
